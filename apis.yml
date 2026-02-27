@@ -1,0 +1,110 @@
+name: Trellix
+description: 'Trellix is a cybersecurity company that delivers comprehensive,  open, and native extended detection and response (XDR) platform.  The company provides threat detection, investigation, and response  capabilities across endpoints, networks, data, and cloud environments.
+
+  '
+image: https://www.trellix.com/favicon.ico
+url: https://www.trellix.com
+created: '2024'
+modified: '2024'
+tags:
+- cybersecurity
+- XDR
+- threat detection
+- endpoint security
+- cloud security
+- threat intelligence
+apis:
+- name: Trellix ePO API
+  description: 'McAfee ePolicy Orchestrator (ePO) REST API for centralized  security management, policy enforcement, and reporting across  the enterprise.
+
+    '
+  image: https://www.trellix.com/favicon.ico
+  humanURL: https://docs.trellix.com/bundle/epolicy-orchestrator
+  baseURL: https://your-epo-server:8443/remote
+  tags:
+  - security management
+  - policy orchestration
+  - enterprise security
+  - endpoint management
+  properties:
+  - type: Documentation
+    url: https://docs.trellix.com/
+  - type: Authentication
+    url: https://docs.trellix.com/bundle/epolicy-orchestrator/page/GUID-API-Authentication.html
+  contact:
+  - FN: Trellix Support
+    url: https://www.trellix.com/support/
+- name: Trellix Insights API
+  description: 'API for accessing threat intelligence, security analytics,  and insights from the Trellix threat research platform.
+
+    '
+  image: https://www.trellix.com/favicon.ico
+  humanURL: https://www.trellix.com/en-us/products/insights.html
+  baseURL: https://api.trellix.com/insights
+  tags:
+  - threat intelligence
+  - analytics
+  - security insights
+  - threat research
+  properties:
+  - type: Documentation
+    url: https://docs.trellix.com/
+  - type: API Keys
+    url: https://docs.trellix.com/bundle/insights-api/
+- name: Trellix EDR API
+  description: 'Endpoint Detection and Response API for advanced threat hunting,  investigation, and automated response capabilities.
+
+    '
+  image: https://www.trellix.com/favicon.ico
+  humanURL: https://www.trellix.com/en-us/products/edr.html
+  baseURL: https://api.trellix.com/edr
+  tags:
+  - endpoint detection
+  - threat hunting
+  - incident response
+  - forensics
+  properties:
+  - type: Documentation
+    url: https://docs.trellix.com/bundle/edr-api/
+  - type: Use Cases
+    url: https://docs.trellix.com/bundle/edr-use-cases/
+- name: Trellix Data Exchange Layer (DXL) API
+  description: 'Messaging fabric API that enables real-time communication  between security tools and data sharing across the security ecosystem.
+
+    '
+  image: https://www.trellix.com/favicon.ico
+  humanURL: https://www.trellix.com/en-us/products/data-exchange-layer.html
+  baseURL: https://dxl.trellix.com
+  tags:
+  - integration
+  - messaging
+  - data exchange
+  - automation
+  properties:
+  - type: Documentation
+    url: https://opendxl.github.io/
+  - type: GitHub
+    url: https://github.com/opendxl
+  - type: SDK
+    url: https://opendxl.github.io/opendxl-client-python/
+maintainers:
+- FN: Trellix API Team
+  email: developer-support@trellix.com
+  url: https://www.trellix.com/support/
+common:
+- type: Portal
+  url: https://www.trellix.com/
+- type: Developer Portal
+  url: https://docs.trellix.com/
+- type: Support
+  url: https://www.trellix.com/support/
+- type: Login
+  url: https://sso.trellix.com/
+- type: Community
+  url: https://community.trellix.com/
+- type: Status
+  url: https://status.trellix.com/
+- type: Privacy Policy
+  url: https://www.trellix.com/en-us/about/legal/privacy.html
+- type: Terms of Service
+  url: https://www.trellix.com/en-us/about/legal/terms-of-use.html

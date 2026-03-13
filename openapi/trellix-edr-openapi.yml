@@ -1,0 +1,754 @@
+openapi: 3.1.0
+info:
+  title: Trellix EDR API
+  description: >-
+    Endpoint Detection and Response API for advanced threat hunting,
+    investigation, and automated response capabilities. The EDR API
+    supports querying threat data, searching devices, retrieving action
+    history, and executing real-time search and response actions across
+    managed endpoints. Authentication uses OAuth 2.0 client credentials
+    with the soc.act.tg scope.
+  version: '2.0'
+  contact:
+    name: Trellix Support
+    url: https://www.trellix.com/support/
+  termsOfService: https://www.trellix.com/en-us/about/legal/terms-of-use.html
+externalDocs:
+  description: Trellix EDR Product Guide
+  url: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide
+servers:
+  - url: https://api.manage.trellix.com
+    description: Trellix Cloud Management Platform
+tags:
+  - name: Threats
+    description: >-
+      Query aggregated threat intelligence including threat names,
+      severity rankings, SHA256 hashes, and MITRE ATT&CK mappings.
+  - name: Detections
+    description: >-
+      Retrieve individual detection events with process names,
+      command lines, hash identifiers, and domain information.
+  - name: Alerts
+    description: >-
+      Access discrete detection alerts containing process, user,
+      and host context with trace identifiers and severity scores.
+  - name: Affected Hosts
+    description: >-
+      Query detection counts, severity rankings, and first detection
+      timestamps for systems affected by threats.
+  - name: Searches
+    description: >-
+      Execute real-time searches across managed endpoints to hunt
+      for indicators of compromise and suspicious activity.
+  - name: Reactions
+    description: >-
+      Execute response actions on endpoints such as killing processes,
+      quarantining files, or isolating hosts.
+  - name: Action History
+    description: >-
+      Retrieve the history of response actions executed on managed
+      endpoints through the EDR platform.
+security:
+  - bearerAuth: []
+paths:
+  /edr/v2/threats:
+    get:
+      operationId: listThreats
+      summary: List detected threats
+      description: >-
+        Retrieve a list of aggregated threats detected across managed
+        endpoints. Threats are collections of related alerts grouped
+        by Trellix correlation logic, including severity rankings,
+        SHA256 hashes, and MITRE ATT&CK technique mappings.
+      tags:
+        - Threats
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: since
+          in: query
+          description: >-
+            Return threats detected after this ISO 8601 timestamp.
+          schema:
+            type: string
+            format: date-time
+        - name: severity
+          in: query
+          description: Filter threats by severity level
+          schema:
+            type: string
+            enum:
+              - low
+              - medium
+              - high
+              - critical
+      responses:
+        '200':
+          description: Paginated list of detected threats
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Threat'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '403':
+          description: Forbidden - insufficient scope permissions
+  /edr/v2/threats/{threatId}:
+    get:
+      operationId: getThreat
+      summary: Get threat details
+      description: >-
+        Retrieve detailed information about a specific threat including
+        all associated alerts, affected hosts, MITRE ATT&CK mappings,
+        and aggregated indicators of compromise.
+      tags:
+        - Threats
+      parameters:
+        - $ref: '#/components/parameters/threatId'
+      responses:
+        '200':
+          description: Threat details returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Threat'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Threat not found
+  /edr/v2/detections:
+    get:
+      operationId: listDetections
+      summary: List detections
+      description: >-
+        Retrieve individual detection events across managed endpoints.
+        Detections include SHA256 hashes, severity rankings, and
+        MITRE ATT&CK technique tags associated with each event.
+      tags:
+        - Detections
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: since
+          in: query
+          description: >-
+            Return detections that occurred after this ISO 8601 timestamp.
+          schema:
+            type: string
+            format: date-time
+        - name: threatId
+          in: query
+          description: Filter detections associated with a specific threat
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated list of detections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Detection'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /edr/v2/alerts:
+    get:
+      operationId: listAlerts
+      summary: List alerts
+      description: >-
+        Retrieve discrete detection alerts containing process, user,
+        and host context. Alerts include trace identifiers, detection
+        dates, event types, severity scores, and detection tags.
+      tags:
+        - Alerts
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: since
+          in: query
+          description: >-
+            Return alerts generated after this ISO 8601 timestamp.
+          schema:
+            type: string
+            format: date-time
+        - name: severity
+          in: query
+          description: Filter alerts by severity level
+          schema:
+            type: string
+            enum:
+              - low
+              - medium
+              - high
+              - critical
+      responses:
+        '200':
+          description: Paginated list of alerts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /edr/v2/affectedhosts:
+    get:
+      operationId: listAffectedHosts
+      summary: List affected hosts
+      description: >-
+        Retrieve detection counts, severity rankings, and first
+        detection timestamps for systems affected by threats. Provides
+        a host-centric view of the threat landscape across managed
+        endpoints.
+      tags:
+        - Affected Hosts
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: threatId
+          in: query
+          description: Filter affected hosts by a specific threat
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated list of affected hosts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AffectedHost'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /edr/v2/searches:
+    post:
+      operationId: createSearch
+      summary: Create a real-time search
+      description: >-
+        Initiate a real-time search across managed endpoints to hunt
+        for specific indicators of compromise such as file hashes,
+        process names, or network connections. The search runs
+        asynchronously and results are retrieved separately.
+      tags:
+        - Searches
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchCreate'
+      responses:
+        '201':
+          description: Search initiated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Search'
+        '400':
+          description: Invalid search parameters
+        '401':
+          description: Unauthorized - invalid or expired access token
+    get:
+      operationId: listSearches
+      summary: List searches
+      description: >-
+        Retrieve the list of real-time searches and their current
+        execution status.
+      tags:
+        - Searches
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Paginated list of searches
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Search'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /edr/v2/searches/{searchId}:
+    get:
+      operationId: getSearch
+      summary: Get search status and results
+      description: >-
+        Retrieve the current status and results of a real-time search.
+        Results include matching endpoints and the specific indicators
+        that were found during the search.
+      tags:
+        - Searches
+      parameters:
+        - $ref: '#/components/parameters/searchId'
+      responses:
+        '200':
+          description: Search status and results returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Search'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Search not found
+  /edr/v2/reactions:
+    post:
+      operationId: createReaction
+      summary: Execute a response reaction
+      description: >-
+        Execute a response reaction on a targeted endpoint, such as
+        killing a process, quarantining a file, or collecting forensic
+        data. Reactions are executed in the context of a real-time
+        search session.
+      tags:
+        - Reactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReactionCreate'
+      responses:
+        '202':
+          description: Reaction accepted for execution
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Reaction'
+        '400':
+          description: Invalid reaction parameters
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /edr/v2/actions:
+    get:
+      operationId: listActionHistory
+      summary: List action history
+      description: >-
+        Retrieve the history of response actions executed through
+        the EDR platform, including their status and target details.
+      tags:
+        - Action History
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/offset'
+        - name: since
+          in: query
+          description: >-
+            Return actions executed after this ISO 8601 timestamp.
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Paginated list of actions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ActionHistoryEntry'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        OAuth 2.0 access token obtained through the client credentials
+        flow with soc.act.tg scope. Credentials are generated through
+        the Trellix EDR Credential Generator.
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    threatId:
+      name: threatId
+      in: path
+      required: true
+      description: Unique identifier of the threat
+      schema:
+        type: string
+    searchId:
+      name: searchId
+      in: path
+      required: true
+      description: Unique identifier of the real-time search
+      schema:
+        type: string
+  schemas:
+    Threat:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the threat
+        name:
+          type: string
+          description: Name or classification of the threat
+        severity:
+          type: string
+          enum:
+            - low
+            - medium
+            - high
+            - critical
+          description: Overall severity ranking of the threat
+        sha256:
+          type: string
+          description: SHA256 hash associated with the threat
+        sha1:
+          type: string
+          description: SHA1 hash associated with the threat
+        md5:
+          type: string
+          description: MD5 hash associated with the threat
+        aggregationKey:
+          type: string
+          description: Key used to correlate related detections
+        mitreAttack:
+          type: array
+          items:
+            type: string
+          description: MITRE ATT&CK technique identifiers
+        detectionCount:
+          type: integer
+          description: Total number of detections for this threat
+        affectedHostCount:
+          type: integer
+          description: Number of hosts affected by this threat
+        firstDetected:
+          type: string
+          format: date-time
+          description: Timestamp of the first detection
+        lastDetected:
+          type: string
+          format: date-time
+          description: Timestamp of the most recent detection
+    Detection:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the detection
+        threatId:
+          type: string
+          description: Identifier of the parent threat
+        sha256:
+          type: string
+          description: SHA256 hash of the detected file or artifact
+        severity:
+          type: string
+          enum:
+            - low
+            - medium
+            - high
+            - critical
+          description: Severity ranking of the detection
+        processName:
+          type: string
+          description: Name of the process involved in the detection
+        commandLine:
+          type: string
+          description: Command line arguments of the detected process
+        hostName:
+          type: string
+          description: Hostname of the affected endpoint
+        agentGuid:
+          type: string
+          format: uuid
+          description: GUID of the agent that reported the detection
+        detectedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the detection occurred
+        mitreAttack:
+          type: array
+          items:
+            type: string
+          description: MITRE ATT&CK technique tags
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the alert
+        traceId:
+          type: string
+          description: Trace identifier linking related events
+        eventType:
+          type: string
+          description: Type classification of the alert event
+        severity:
+          type: integer
+          description: Numeric severity score of the alert
+        processName:
+          type: string
+          description: Name of the process associated with the alert
+        commandLine:
+          type: string
+          description: Command line of the process
+        hashId:
+          type: string
+          description: Hash identifier of the process or file
+        domain:
+          type: string
+          description: Network domain associated with the alert
+        hostName:
+          type: string
+          description: Hostname of the affected endpoint
+        userName:
+          type: string
+          description: User account context for the alert
+        detectedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the alert was generated
+        tags:
+          type: array
+          items:
+            type: string
+          description: Detection classification tags
+    AffectedHost:
+      type: object
+      properties:
+        hostName:
+          type: string
+          description: Hostname of the affected system
+        agentGuid:
+          type: string
+          format: uuid
+          description: GUID of the endpoint agent
+        ipAddress:
+          type: string
+          description: IP address of the affected host
+        macAddresses:
+          type: array
+          items:
+            type: string
+          description: MAC addresses of network interfaces
+        detectionCount:
+          type: integer
+          description: Number of detections on this host
+        severity:
+          type: string
+          enum:
+            - low
+            - medium
+            - high
+            - critical
+          description: Highest severity detection on this host
+        firstDetected:
+          type: string
+          format: date-time
+          description: Timestamp of the first detection on this host
+        lastDetected:
+          type: string
+          format: date-time
+          description: Timestamp of the most recent detection
+    Search:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the search
+        status:
+          type: string
+          enum:
+            - pending
+            - running
+            - completed
+            - failed
+            - cancelled
+          description: Current execution status of the search
+        query:
+          type: string
+          description: Search query expression
+        targetHosts:
+          type: array
+          items:
+            type: string
+          description: Target host identifiers for the search
+        matchCount:
+          type: integer
+          description: Number of matching results found
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the search was created
+        completedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the search completed
+    SearchCreate:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: >-
+            Search query expression specifying the indicators to
+            hunt for, such as file hashes, process names, or
+            network indicators.
+        targetHosts:
+          type: array
+          items:
+            type: string
+          description: >-
+            Optional list of specific host identifiers to target.
+            If omitted, the search runs across all managed endpoints.
+    Reaction:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the reaction
+        type:
+          type: string
+          description: Type of response reaction executed
+        status:
+          type: string
+          enum:
+            - pending
+            - executing
+            - completed
+            - failed
+          description: Current execution status of the reaction
+        targetHost:
+          type: string
+          description: Host identifier targeted by the reaction
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the reaction was created
+    ReactionCreate:
+      type: object
+      required:
+        - type
+        - targetHost
+      properties:
+        type:
+          type: string
+          enum:
+            - kill_process
+            - quarantine_file
+            - collect_data
+            - isolate_host
+          description: Type of response reaction to execute
+        targetHost:
+          type: string
+          description: Identifier of the host to target
+        parameters:
+          type: object
+          description: >-
+            Additional parameters specific to the reaction type,
+            such as process ID for kill_process or file path for
+            quarantine_file.
+    ActionHistoryEntry:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the action
+        type:
+          type: string
+          description: Type of action executed
+        status:
+          type: string
+          enum:
+            - pending
+            - executing
+            - completed
+            - failed
+          description: Final status of the action
+        targetHost:
+          type: string
+          description: Hostname targeted by the action
+        initiatedBy:
+          type: string
+          description: User or system that initiated the action
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the action was initiated
+        completedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the action completed
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped

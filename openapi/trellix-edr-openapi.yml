@@ -20,34 +20,34 @@ servers:
   - url: https://api.manage.trellix.com
     description: Trellix Cloud Management Platform
 tags:
-  - name: Threats
-    description: >-
-      Query aggregated threat intelligence including threat names,
-      severity rankings, SHA256 hashes, and MITRE ATT&CK mappings.
-  - name: Detections
-    description: >-
-      Retrieve individual detection events with process names,
-      command lines, hash identifiers, and domain information.
-  - name: Alerts
-    description: >-
-      Access discrete detection alerts containing process, user,
-      and host context with trace identifiers and severity scores.
-  - name: Affected Hosts
-    description: >-
-      Query detection counts, severity rankings, and first detection
-      timestamps for systems affected by threats.
-  - name: Searches
-    description: >-
-      Execute real-time searches across managed endpoints to hunt
-      for indicators of compromise and suspicious activity.
-  - name: Reactions
-    description: >-
-      Execute response actions on endpoints such as killing processes,
-      quarantining files, or isolating hosts.
   - name: Action History
     description: >-
       Retrieve the history of response actions executed on managed
       endpoints through the EDR platform.
+  - name: Affected Hosts
+    description: >-
+      Query detection counts, severity rankings, and first detection
+      timestamps for systems affected by threats.
+  - name: Alerts
+    description: >-
+      Access discrete detection alerts containing process, user,
+      and host context with trace identifiers and severity scores.
+  - name: Detections
+    description: >-
+      Retrieve individual detection events with process names,
+      command lines, hash identifiers, and domain information.
+  - name: Reactions
+    description: >-
+      Execute response actions on endpoints such as killing processes,
+      quarantining files, or isolating hosts.
+  - name: Searches
+    description: >-
+      Execute real-time searches across managed endpoints to hunt
+      for indicators of compromise and suspicious activity.
+  - name: Threats
+    description: >-
+      Query aggregated threat intelligence including threat names,
+      severity rankings, SHA256 hashes, and MITRE ATT&CK mappings.
 security:
   - bearerAuth: []
 paths:

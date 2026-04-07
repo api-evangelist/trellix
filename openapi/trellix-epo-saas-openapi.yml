@@ -27,10 +27,6 @@ tags:
     description: >-
       Retrieve threat events and security incidents detected across
       managed endpoints. Events have a 3-day retention period.
-  - name: Tags
-    description: >-
-      Create, assign, and manage tags for organizing and grouping
-      managed devices within ePO SaaS.
   - name: Groups
     description: >-
       Manage device groups and organizational hierarchy within the
@@ -173,8 +169,7 @@ paths:
         Retrieve all tags configured in ePO SaaS. Tags are used to
         organize and group managed devices for policy assignment
         and reporting purposes.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/offset'
@@ -201,8 +196,7 @@ paths:
         Create a new tag in ePO SaaS for organizing managed devices.
         Tags can be applied to devices manually or through automated
         criteria-based assignment rules.
-      tags:
-        - Tags
+      tags: []
       requestBody:
         required: true
         content:
@@ -231,8 +225,7 @@ paths:
         Retrieve details of a specific tag including its name,
         description, and the criteria used for automatic device
         assignment.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/tagId'
       responses:
@@ -255,8 +248,7 @@ paths:
       description: >-
         Delete a tag from ePO SaaS. Removing a tag also removes
         the tag assignment from all associated devices.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/tagId'
       responses:

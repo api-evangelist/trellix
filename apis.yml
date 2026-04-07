@@ -9,12 +9,12 @@ url: https://www.trellix.com
 created: '2024'
 modified: '2026-03-16'
 tags:
-  - cybersecurity
+  - Cloud Security
+  - Cybersecurity
+  - Endpoint Security
+  - Threat Detection
+  - Threat Intelligence
   - XDR
-  - threat detection
-  - endpoint security
-  - cloud security
-  - threat intelligence
 apis:
   - name: Trellix ePO API
     description: >-
@@ -24,10 +24,10 @@ apis:
     humanURL: https://docs.trellix.com/bundle/epolicy-orchestrator
     baseURL: https://your-epo-server:8443/remote
     tags:
-      - security management
-      - policy orchestration
-      - enterprise security
-      - endpoint management
+      - Endpoint Management
+      - Enterprise Security
+      - Policy Orchestration
+      - Security Management
     properties:
       - type: Documentation
         url: https://docs.trellix.com/bundle/epolicy-orchestrator
@@ -47,18 +47,16 @@ apis:
       of devices, events, tags, queries, and response actions through
       the Trellix cloud management platform.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/epolicy-orchestrator-saas-product-guide
+    humanURL: https://docs.trellix.com/bundle/epolicy-orchestrator-saas-product-guide
     baseURL: https://api.manage.trellix.com
     tags:
       - Cloud Management
-      - Security Management
-      - SaaS
       - Endpoint Management
+      - SaaS
+      - Security Management
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/epolicy-orchestrator-saas-product-guide
+        url: https://docs.trellix.com/bundle/epolicy-orchestrator-saas-product-guide
       - type: Authentication
         url: https://developer.manage.trellix.com/mvision/docs/umam
       - type: GettingStarted
@@ -73,16 +71,15 @@ apis:
     humanURL: https://docs.trellix.com/bundle/trellix-insights-product-guide
     baseURL: https://api.manage.trellix.com
     tags:
-      - Threat Intelligence
       - Analytics
       - Security Insights
+      - Threat Intelligence
       - Threat Research
     properties:
       - type: Documentation
         url: https://docs.trellix.com/bundle/trellix-insights-product-guide
       - type: APIReference
-        url: 
-          https://docs.trellix.com/bundle/trellix-insights-product-guide/page/UUID-e5e4730b-ac74-d923-f691-168ea880e3cd.html
+        url: https://docs.trellix.com/bundle/trellix-insights-product-guide/page/UUID-e5e4730b-ac74-d923-f691-168ea880e3cd.html
   - name: Trellix EDR API
     description: >-
       Endpoint Detection and Response API for advanced threat hunting,
@@ -91,21 +88,18 @@ apis:
       history, and executing real-time search and response actions across
       managed endpoints.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide
+    humanURL: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide
     baseURL: https://api.manage.trellix.com
     tags:
       - Endpoint Detection
-      - Threat Hunting
-      - Incident Response
       - Forensics
+      - Incident Response
+      - Threat Hunting
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide
+        url: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide
       - type: APIReference
-        url: 
-          https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide/page/UUID-d4602e2b-5adc-bdb4-c8cf-163997d5cd6e.html
+        url: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide/page/UUID-d4602e2b-5adc-bdb4-c8cf-163997d5cd6e.html
       - type: Authentication
         url: https://developer.manage.trellix.com/mvision/docs/umam
       - type: GitHubRepository
@@ -121,10 +115,10 @@ apis:
     humanURL: https://opendxl.github.io/
     baseURL: https://dxl.trellix.com
     tags:
+      - Automation
+      - Data Exchange
       - Integration
       - Messaging
-      - Data Exchange
-      - Automation
     properties:
       - type: Documentation
         url: https://opendxl.github.io/
@@ -140,24 +134,20 @@ apis:
       operations. Uses role-based access control with api_admin and
       api_analyst user roles.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/hx_api_2020-2/page/UUID-973bb2b7-aeba-2ea1-afb9-7d20b136d3f6.html
+    humanURL: https://docs.trellix.com/bundle/hx_api_2020-2/page/UUID-973bb2b7-aeba-2ea1-afb9-7d20b136d3f6.html
     baseURL: https://{hx-appliance}/hx/api/v3
     tags:
-      - Endpoint Security
-      - Threat Detection
-      - Incident Response
       - Containment
+      - Endpoint Security
+      - Incident Response
+      - Threat Detection
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/hx_api_2020-2/page/UUID-973bb2b7-aeba-2ea1-afb9-7d20b136d3f6.html
+        url: https://docs.trellix.com/bundle/hx_api_2020-2/page/UUID-973bb2b7-aeba-2ea1-afb9-7d20b136d3f6.html
       - type: APIReference
-        url: 
-          https://docs.trellix.com/bundle/hx_api_2020-2/page/UUID-33b4d7e3-a428-5137-d583-d40753483fbe.html
+        url: https://docs.trellix.com/bundle/hx_api_2020-2/page/UUID-33b4d7e3-a428-5137-d583-d40753483fbe.html
       - type: GettingStarted
-        url: 
-          https://docs.trellix.com/bundle/api_1-0-0_ug/page/api-documentation-module-home-page/using-the-endpoint-security-apis.html
+        url: https://docs.trellix.com/bundle/api_1-0-0_ug/page/api-documentation-module-home-page/using-the-endpoint-security-apis.html
   - name: Trellix Data Loss Prevention (DLP) API
     description: >-
       REST API for Trellix Data Loss Prevention Endpoint that enables
@@ -166,21 +156,18 @@ apis:
       applying DLP policies, querying incident IDs for data-in-use and
       data-in-motion events, and retrieving incident details.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/data-loss-prevention-landing-page/page/UUID-d99a9913-80b8-d1b9-e030-9186ad9648ff.html
+    humanURL: https://docs.trellix.com/bundle/data-loss-prevention-landing-page/page/UUID-d99a9913-80b8-d1b9-e030-9186ad9648ff.html
     baseURL: https://{epo-server}:8443
     tags:
-      - Data Loss Prevention
       - Compliance
+      - Data Loss Prevention
       - Data Protection
       - Incident Management
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/data-loss-prevention-landing-page/page/UUID-d99a9913-80b8-d1b9-e030-9186ad9648ff.html
+        url: https://docs.trellix.com/bundle/data-loss-prevention-landing-page/page/UUID-d99a9913-80b8-d1b9-e030-9186ad9648ff.html
       - type: APIReference
-        url: 
-          https://docs.trellix.com/bundle/data-loss-prevention-11.11.x-product-guide/page/UUID-fde8c193-c95f-0f3c-2ccf-926691ea31d8.html
+        url: https://docs.trellix.com/bundle/data-loss-prevention-11.11.x-product-guide/page/UUID-fde8c193-c95f-0f3c-2ccf-926691ea31d8.html
   - name: Trellix Email Security Cloud API
     description: >-
       RESTful API for Trellix Email Security Cloud (formerly FireEye ETP)
@@ -188,21 +175,18 @@ apis:
       detection in email. Supports APIs for querying advanced threats,
       email trace, and quarantine management operations.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/fe-email-cloud-landing/page/UUID-aa9b8905-c585-0327-7f24-f66ea402d3b6.html
+    humanURL: https://docs.trellix.com/bundle/fe-email-cloud-landing/page/UUID-aa9b8905-c585-0327-7f24-f66ea402d3b6.html
     baseURL: https://etp.us.fireeye.com/api/v1
     tags:
-      - Email Security
-      - Threat Detection
       - Cloud Security
+      - Email Security
       - Quarantine
+      - Threat Detection
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/fe-email-cloud-landing/page/UUID-aa9b8905-c585-0327-7f24-f66ea402d3b6.html
+        url: https://docs.trellix.com/bundle/fe-email-cloud-landing/page/UUID-aa9b8905-c585-0327-7f24-f66ea402d3b6.html
       - type: APIReference
-        url: 
-          https://docs.trellix.com/bundle/etp_api/page/UUID-30726aa3-e420-6f62-6b84-6ad0bdace483.html
+        url: https://docs.trellix.com/bundle/etp_api/page/UUID-30726aa3-e420-6f62-6b84-6ad0bdace483.html
   - name: Trellix Helix API
     description: >-
       API for the Trellix Helix security operations platform that integrates
@@ -220,11 +204,9 @@ apis:
       - Threat Detection
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/helix_pg/page/UUID-889d9be0-0cc8-3ab3-cdb3-9aab24208509.html
+        url: https://docs.trellix.com/bundle/helix_pg/page/UUID-889d9be0-0cc8-3ab3-cdb3-9aab24208509.html
       - type: APIReference
-        url: 
-          https://docs.trellix.com/bundle/helix_pg/page/UUID-1fa29a61-f2d5-601e-dd27-e72f93627e59.html
+        url: https://docs.trellix.com/bundle/helix_pg/page/UUID-1fa29a61-f2d5-601e-dd27-e72f93627e59.html
   - name: Trellix Intelligent Sandbox API
     description: >-
       REST API for Trellix Intelligent Sandbox (formerly Advanced Threat
@@ -233,18 +215,16 @@ apis:
       status queries, and report retrieval for malware detection and
       threat analysis.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/trellix-intelligent-sandbox-5.0.x-api-reference-guide/page/GUID-F600CDC5-827A-4435-BD37-E0DF91810AB1.html
+    humanURL: https://docs.trellix.com/bundle/trellix-intelligent-sandbox-5.0.x-api-reference-guide/page/GUID-F600CDC5-827A-4435-BD37-E0DF91810AB1.html
     baseURL: https://{sandbox-server}/php
     tags:
-      - Sandbox
-      - Malware Analysis
-      - Threat Detection
       - File Analysis
+      - Malware Analysis
+      - Sandbox
+      - Threat Detection
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/trellix-intelligent-sandbox-5.0.x-api-reference-guide/page/GUID-F600CDC5-827A-4435-BD37-E0DF91810AB1.html
+        url: https://docs.trellix.com/bundle/trellix-intelligent-sandbox-5.0.x-api-reference-guide/page/GUID-F600CDC5-827A-4435-BD37-E0DF91810AB1.html
       - type: GitHubRepository
         url: https://github.com/trellix-opensource/intelligent-sandbox-api
   - name: Trellix Threat Intelligence Exchange (TIE) API
@@ -255,18 +235,16 @@ apis:
       Layer. The TIE API allows querying file and certificate reputations,
       setting local reputations, and receiving reputation change notifications.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/threat-intelligence-exchange-3.0.x-product-guide
+    humanURL: https://docs.trellix.com/bundle/threat-intelligence-exchange-3.0.x-product-guide
     baseURL: https://dxl.trellix.com
     tags:
-      - Threat Intelligence
-      - Reputation
       - Data Exchange
       - Malware Detection
+      - Reputation
+      - Threat Intelligence
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/threat-intelligence-exchange-3.0.x-product-guide
+        url: https://docs.trellix.com/bundle/threat-intelligence-exchange-3.0.x-product-guide
       - type: SDKs
         url: https://github.com/opendxl/opendxl-tie-client-javascript
   - name: Trellix IOC (Indicators of Compromise) API
@@ -276,21 +254,18 @@ apis:
       IOCs including file hashes, IP addresses, domains, and email addresses
       for threat detection and investigation.
     image: https://www.trellix.com/favicon.ico
-    humanURL: 
-      https://docs.trellix.com/bundle/iocs_1-2-144_ug/page/UUID-d981cbd0-d535-dd8f-7cf8-a287bf077392.html
+    humanURL: https://docs.trellix.com/bundle/iocs_1-2-144_ug/page/UUID-d981cbd0-d535-dd8f-7cf8-a287bf077392.html
     baseURL: https://{hx-appliance}/hx/api/v3
     tags:
       - Indicators of Compromise
-      - Threat Intelligence
-      - Threat Detection
       - Security Operations
+      - Threat Detection
+      - Threat Intelligence
     properties:
       - type: Documentation
-        url: 
-          https://docs.trellix.com/bundle/iocs_1-2-144_ug/page/UUID-d981cbd0-d535-dd8f-7cf8-a287bf077392.html
+        url: https://docs.trellix.com/bundle/iocs_1-2-144_ug/page/UUID-d981cbd0-d535-dd8f-7cf8-a287bf077392.html
       - type: APIReference
-        url: 
-          https://docs.trellix.com/bundle/iocs_1-2-144_ug/page/UUID-11acd4c1-f095-333a-c394-5bfbf0a69823.html
+        url: https://docs.trellix.com/bundle/iocs_1-2-144_ug/page/UUID-11acd4c1-f095-333a-c394-5bfbf0a69823.html
   - name: Trellix Detection as a Service API
     description: >-
       API-driven malware detection service that leverages the Trellix
@@ -302,9 +277,9 @@ apis:
     humanURL: https://www.trellix.com/products/detection-as-a-service/
     baseURL: https://feapi.marketplace.apps.fireeye.com
     tags:
-      - Malware Detection
-      - File Analysis
       - Cloud Security
+      - File Analysis
+      - Malware Detection
       - Threat Detection
     properties:
       - type: Documentation
@@ -371,8 +346,6 @@ common:
   - type: Knowledge Base
     url: https://kcm.trellix.com/
   - type: PostmanCollection
-    url: 
-      https://www.postman.com/bmarandel/trellix-api-gateway/documentation/d3e3gan/trellix-api-gateway
+    url: https://www.postman.com/bmarandel/trellix-api-gateway/documentation/d3e3gan/trellix-api-gateway
   - type: ReleaseNotes
-    url: 
-      https://docs.trellix.com/bundle/trellix-developer-portal-and-marketplace-release-notes
+    url: https://docs.trellix.com/bundle/trellix-developer-portal-and-marketplace-release-notes

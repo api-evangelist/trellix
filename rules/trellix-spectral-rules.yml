@@ -1,0 +1,83 @@
+rules:
+  trellix-operation-id-camel-case:
+    description: Operation IDs must use camelCase
+    message: "Operation ID '{{value}}' must use camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  trellix-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 /()+&-]*$"
+
+  trellix-security-defined:
+    description: All operations must define security requirements
+    message: "Operation must define security requirements"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: security
+      function: defined
+
+  trellix-response-200-get:
+    description: All GET operations must define a 200 response
+    message: "GET operation must define a 200 success response"
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: defined
+
+  trellix-response-401-defined:
+    description: Authenticated operations should define a 401 response
+    message: "Operation should define 401 Unauthorized"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: responses.401
+      function: defined
+
+  trellix-tag-defined:
+    description: All operations must have at least one tag
+    message: "Operation must include at least one tag"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: defined
+
+  trellix-oauth2-bearer:
+    description: Trellix APIs use OAuth 2.0 Bearer token authentication
+    message: "Security scheme should use OAuth 2.0 or Bearer token"
+    severity: info
+    given: "$.components.securitySchemes"
+    then:
+      function: defined
+
+  trellix-path-kebab-case:
+    description: API paths should use kebab-case
+    message: "Path should use kebab-case"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*|/\\{[a-zA-Z][a-zA-Z0-9]*\\})*)+$"
+
+  trellix-post-request-body:
+    description: POST and PUT operations should define a request body
+    message: "POST/PUT operation should define a requestBody"
+    severity: warn
+    given: "$.paths[*][post,put]"
+    then:
+      field: requestBody
+      function: defined

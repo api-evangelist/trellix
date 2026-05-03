@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trellix/main/json-schema/trellix-device-schema.json",
+  "title": "Trellix Device",
+  "description": "Schema for a managed endpoint device in Trellix ePO",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique device identifier" },
+    "name": { "type": "string", "description": "Device hostname" },
+    "ipAddress": { "type": "string", "description": "Primary IP address" },
+    "macAddress": { "type": "string", "description": "MAC address" },
+    "osName": { "type": "string", "description": "Operating system name" },
+    "osVersion": { "type": "string", "description": "Operating system version" },
+    "agentVersion": { "type": "string", "description": "Trellix agent version installed" },
+    "status": { "type": "string", "enum": ["managed", "unmanaged", "quarantined", "offline"], "description": "Device management status" },
+    "lastSeen": { "type": "string", "format": "date-time", "description": "Last check-in timestamp" },
+    "groupId": { "type": "string", "description": "Device group identifier" },
+    "tags": { "type": "array", "items": { "type": "string" }, "description": "Applied tags" }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": true
+}

@@ -1,0 +1,262 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Trellix Endpoint Security Operations"
+  description: >-
+    Unified capability for SOC analysts and endpoint security engineers to
+    detect, investigate, hunt, and respond to endpoint threats using Trellix
+    EDR and ePO SaaS. Combines threat detection, alert investigation,
+    real-time search, device management, and automated response actions
+    for comprehensive endpoint security operations.
+  tags:
+    - Endpoint Security
+    - Incident Response
+    - Security Operations
+    - Threat Detection
+    - Threat Hunting
+    - XDR
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TRELLIX_EDR_API_KEY: TRELLIX_EDR_API_KEY
+      TRELLIX_EPO_API_KEY: TRELLIX_EPO_API_KEY
+
+capability:
+  consumes:
+    - import: trellix-edr
+      location: ./shared/trellix-edr.yaml
+    - import: trellix-epo
+      location: ./shared/trellix-epo-saas.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: trellix-endpoint-ops-api
+      description: "Unified REST API for Trellix endpoint security operations."
+      resources:
+        - path: /v1/threats
+          name: threats
+          description: "Detected threats from EDR"
+          operations:
+            - method: GET
+              name: list-threats
+              description: "List detected threats"
+              call: "trellix-edr.list-threats"
+              with:
+                limit: "rest.limit"
+                since: "rest.since"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/detections
+          name: detections
+          description: "Endpoint detections"
+          operations:
+            - method: GET
+              name: list-detections
+              description: "List detections"
+              call: "trellix-edr.list-detections"
+              with:
+                limit: "rest.limit"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/alerts
+          name: alerts
+          description: "Security alerts"
+          operations:
+            - method: GET
+              name: list-alerts
+              description: "List alerts"
+              call: "trellix-edr.list-alerts"
+              with:
+                limit: "rest.limit"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/devices
+          name: devices
+          description: "Managed endpoint devices from ePO"
+          operations:
+            - method: GET
+              name: list-devices
+              description: "List managed devices"
+              call: "trellix-epo.list-devices"
+              with:
+                limit: "rest.limit"
+                filter: "rest.filter"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/events
+          name: events
+          description: "Threat events from ePO"
+          operations:
+            - method: GET
+              name: list-events
+              description: "List threat events"
+              call: "trellix-epo.list-events"
+              with:
+                limit: "rest.limit"
+                since: "rest.since"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/searches
+          name: searches
+          description: "Real-time endpoint searches"
+          operations:
+            - method: GET
+              name: list-searches
+              description: "List active searches"
+              call: "trellix-edr.list-searches"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-search
+              description: "Create real-time search"
+              call: "trellix-edr.create-search"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reactions
+          name: reactions
+          description: "EDR response reactions"
+          operations:
+            - method: POST
+              name: create-reaction
+              description: "Execute response reaction"
+              call: "trellix-edr.create-reaction"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/response-actions
+          name: response-actions
+          description: "ePO response actions"
+          operations:
+            - method: POST
+              name: create-response-action
+              description: "Create response action"
+              call: "trellix-epo.create-response-action"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: trellix-endpoint-ops-mcp
+      transport: http
+      description: "MCP server for AI-assisted endpoint security operations, threat hunting, and incident response."
+      tools:
+        - name: edr-list-threats
+          description: "List threats detected by Trellix EDR for incident investigation and triage."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "trellix-edr.list-threats"
+          with:
+            limit: "tools.limit"
+            since: "tools.since"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: edr-list-detections
+          description: "List endpoint detections from EDR for threat hunting and analysis."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "trellix-edr.list-detections"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: edr-list-alerts
+          description: "List security alerts from EDR for SOC triage and prioritization."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "trellix-edr.list-alerts"
+          with:
+            limit: "tools.limit"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: edr-create-search
+          description: "Create a real-time search across endpoints to hunt for indicators of compromise."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "trellix-edr.create-search"
+          with:
+            query: "tools.query"
+            hosts: "tools.hosts"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: edr-create-reaction
+          description: "Execute an EDR response reaction on an endpoint (isolate, collect artifacts, terminate process)."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: false
+          call: "trellix-edr.create-reaction"
+          with:
+            type: "tools.type"
+            hostId: "tools.hostId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: epo-list-devices
+          description: "List managed endpoint devices from ePO SaaS for asset inventory and status checks."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "trellix-epo.list-devices"
+          with:
+            limit: "tools.limit"
+            filter: "tools.filter"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: epo-list-events
+          description: "List threat events from ePO SaaS for incident correlation and reporting."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "trellix-epo.list-events"
+          with:
+            limit: "tools.limit"
+            since: "tools.since"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: epo-execute-query
+          description: "Execute a saved ePO query for security reporting and compliance checks."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "trellix-epo.execute-query"
+          with:
+            queryId: "tools.queryId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: epo-create-response-action
+          description: "Create an ePO response action on a managed device (quarantine, run scan, apply policy)."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: false
+          call: "trellix-epo.create-response-action"
+          with:
+            type: "tools.type"
+            deviceId: "tools.deviceId"
+          outputParameters:
+            - type: object
+              mapping: "$."

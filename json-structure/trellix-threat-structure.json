@@ -1,0 +1,18 @@
+{
+  "title": "Trellix Threat Structure",
+  "description": "JSON Structure for a Trellix EDR threat object",
+  "type": "object",
+  "fields": [
+    { "name": "id", "type": "string", "required": true, "description": "Unique threat identifier" },
+    { "name": "name", "type": "string", "required": true, "description": "Threat name or family" },
+    { "name": "type", "type": "string", "required": false, "description": "Threat type" },
+    { "name": "severity", "type": "enum[critical,high,medium,low]", "required": true, "description": "Threat severity level" },
+    { "name": "status", "type": "enum[active,contained,remediated,investigating]", "required": false, "description": "Threat status" },
+    { "name": "detectedAt", "type": "date-time", "required": false, "description": "Detection timestamp" },
+    { "name": "hostId", "type": "string", "required": false, "description": "Affected host identifier" },
+    { "name": "hostName", "type": "string", "required": false, "description": "Affected host name" },
+    { "name": "filePath", "type": "string", "required": false, "description": "File path of malicious object" },
+    { "name": "hash", "type": "string", "required": false, "description": "SHA256 file hash" },
+    { "name": "processName", "type": "string", "required": false, "description": "Associated process name" }
+  ]
+}

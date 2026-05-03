@@ -54,7 +54,7 @@ paths:
   /edr/v2/threats:
     get:
       operationId: listThreats
-      summary: Trellix List detected threats
+      summary: List detected threats
       description: >-
         Retrieve a list of aggregated threats detected across managed
         endpoints. Threats are collections of related alerts grouped
@@ -103,7 +103,7 @@ paths:
   /edr/v2/threats/{threatId}:
     get:
       operationId: getThreat
-      summary: Trellix Get threat details
+      summary: Get threat details
       description: >-
         Retrieve detailed information about a specific threat including
         all associated alerts, affected hosts, MITRE ATT&CK mappings,
@@ -129,7 +129,7 @@ paths:
   /edr/v2/detections:
     get:
       operationId: listDetections
-      summary: Trellix List detections
+      summary: List detections
       description: >-
         Retrieve individual detection events across managed endpoints.
         Detections include SHA256 hashes, severity rankings, and
@@ -170,7 +170,7 @@ paths:
   /edr/v2/alerts:
     get:
       operationId: listAlerts
-      summary: Trellix List alerts
+      summary: List alerts
       description: >-
         Retrieve discrete detection alerts containing process, user,
         and host context. Alerts include trace identifiers, detection
@@ -216,7 +216,7 @@ paths:
   /edr/v2/affectedhosts:
     get:
       operationId: listAffectedHosts
-      summary: Trellix List affected hosts
+      summary: List affected hosts
       description: >-
         Retrieve detection counts, severity rankings, and first
         detection timestamps for systems affected by threats. Provides
@@ -251,7 +251,7 @@ paths:
   /edr/v2/searches:
     post:
       operationId: createSearch
-      summary: Trellix Create a real-time search
+      summary: Create a real-time search
       description: >-
         Initiate a real-time search across managed endpoints to hunt
         for specific indicators of compromise such as file hashes,
@@ -281,7 +281,7 @@ paths:
           description: Unauthorized - invalid or expired access token
     get:
       operationId: listSearches
-      summary: Trellix List searches
+      summary: List searches
       description: >-
         Retrieve the list of real-time searches and their current
         execution status.
@@ -309,7 +309,7 @@ paths:
   /edr/v2/searches/{searchId}:
     get:
       operationId: getSearch
-      summary: Trellix Get search status and results
+      summary: Get search status and results
       description: >-
         Retrieve the current status and results of a real-time search.
         Results include matching endpoints and the specific indicators
@@ -335,7 +335,7 @@ paths:
   /edr/v2/reactions:
     post:
       operationId: createReaction
-      summary: Trellix Execute a response reaction
+      summary: Execute a response reaction
       description: >-
         Execute a response reaction on a targeted endpoint, such as
         killing a process, quarantining a file, or collecting forensic
@@ -366,7 +366,7 @@ paths:
   /edr/v2/actions:
     get:
       operationId: listActionHistory
-      summary: Trellix List action history
+      summary: List action history
       description: >-
         Retrieve the history of response actions executed through
         the EDR platform, including their status and target details.

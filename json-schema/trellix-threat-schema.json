@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trellix/main/json-schema/trellix-threat-schema.json",
+  "title": "Trellix Threat",
+  "description": "Schema for a threat detected by Trellix EDR",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique threat identifier" },
+    "name": { "type": "string", "description": "Threat name or family" },
+    "type": { "type": "string", "description": "Threat type (malware, ransomware, exploit, etc.)" },
+    "severity": { "type": "string", "enum": ["critical", "high", "medium", "low"], "description": "Threat severity" },
+    "status": { "type": "string", "enum": ["active", "contained", "remediated", "investigating"], "description": "Threat status" },
+    "detectedAt": { "type": "string", "format": "date-time", "description": "Detection timestamp" },
+    "hostId": { "type": "string", "description": "Affected host identifier" },
+    "hostName": { "type": "string", "description": "Affected host name" },
+    "filePath": { "type": "string", "description": "File path of the malicious object" },
+    "hash": { "type": "string", "description": "File hash (SHA256)" },
+    "processName": { "type": "string", "description": "Associated process name" }
+  },
+  "required": ["id", "name", "severity"],
+  "additionalProperties": true
+}

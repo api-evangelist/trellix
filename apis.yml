@@ -7,7 +7,7 @@ description: >-
 image: https://www.trellix.com/favicon.ico
 url: https://www.trellix.com
 created: '2024'
-modified: '2026-03-16'
+modified: '2026-05-03'
 tags:
   - Cloud Security
   - Cybersecurity
@@ -349,3 +349,21 @@ common:
     url: https://www.postman.com/bmarandel/trellix-api-gateway/documentation/d3e3gan/trellix-api-gateway
   - type: ReleaseNotes
     url: https://docs.trellix.com/bundle/trellix-developer-portal-and-marketplace-release-notes
+  - type: OpenAPI
+    url: openapi/trellix-edr-openapi.yml
+  - type: OpenAPI
+    url: openapi/trellix-epo-saas-openapi.yml
+  - type: JSONSchema
+    url: json-schema/trellix-threat-schema.json
+  - type: JSONSchema
+    url: json-schema/trellix-device-schema.json
+  - type: JSONStructure
+    url: json-structure/trellix-threat-structure.json
+  - type: JSON-LD
+    url: json-ld/trellix-context.jsonld
+  - type: SpectralRules
+    url: rules/trellix-spectral-rules.yml
+  - type: NaftikoCapabilities
+    url: capabilities/endpoint-security-operations.yaml
+  - type: Vocabulary
+    url: vocabulary/trellix-vocabulary.yml

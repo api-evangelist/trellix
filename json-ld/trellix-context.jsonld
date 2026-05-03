@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "trellix": "https://www.trellix.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Threat": "trellix:Threat",
+    "Detection": "trellix:Detection",
+    "Alert": "trellix:Alert",
+    "Device": "schema:ComputerOrdered",
+    "Event": "schema:Event",
+    "Tag": "schema:DefinedTerm",
+    "Group": "schema:Organization",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "type": "schema:additionalType",
+    "severity": "trellix:severity",
+    "status": "trellix:status",
+    "detectedAt": { "@id": "schema:dateCreated", "@type": "xsd:dateTime" },
+    "hostId": { "@id": "trellix:hostId", "@type": "@id" },
+    "hostName": "trellix:hostName",
+    "filePath": "trellix:filePath",
+    "hash": "trellix:hash",
+    "processName": "trellix:processName",
+    "ipAddress": "schema:networkAddress",
+    "macAddress": "schema:value",
+    "osName": "schema:operatingSystem",
+    "osVersion": "trellix:osVersion",
+    "agentVersion": "trellix:agentVersion",
+    "lastSeen": { "@id": "schema:dateModified", "@type": "xsd:dateTime" },
+    "groupId": { "@id": "trellix:groupId", "@type": "@id" },
+    "tags": { "@id": "schema:keywords", "@container": "@set" },
+    "hostCount": { "@id": "trellix:hostCount", "@type": "xsd:integer" },
+    "devices": { "@id": "trellix:devices", "@container": "@set" },
+    "events": { "@id": "trellix:events", "@container": "@set" }
+  }
+}

@@ -45,7 +45,7 @@ paths:
   /epo/v2/devices:
     get:
       operationId: listDevices
-      summary: Trellix List managed devices
+      summary: List managed devices
       description: >-
         Retrieve a paginated list of all endpoint devices registered
         and managed through ePO SaaS. Returns device attributes
@@ -91,7 +91,7 @@ paths:
   /epo/v2/devices/{deviceId}:
     get:
       operationId: getDevice
-      summary: Trellix Get device details
+      summary: Get device details
       description: >-
         Retrieve detailed information about a specific managed device
         by its unique identifier. Returns comprehensive device attributes
@@ -117,7 +117,7 @@ paths:
   /epo/v2/events:
     get:
       operationId: listEvents
-      summary: Trellix List threat events
+      summary: List threat events
       description: >-
         Retrieve threat events detected across managed endpoints.
         Events include malware detections, policy violations, and
@@ -164,7 +164,7 @@ paths:
   /epo/v2/tags:
     get:
       operationId: listTags
-      summary: Trellix List tags
+      summary: List tags
       description: >-
         Retrieve all tags configured in ePO SaaS. Tags are used to
         organize and group managed devices for policy assignment
@@ -191,7 +191,7 @@ paths:
           description: Unauthorized - invalid or expired access token
     post:
       operationId: createTag
-      summary: Trellix Create a tag
+      summary: Create a tag
       description: >-
         Create a new tag in ePO SaaS for organizing managed devices.
         Tags can be applied to devices manually or through automated
@@ -220,7 +220,7 @@ paths:
   /epo/v2/tags/{tagId}:
     get:
       operationId: getTag
-      summary: Trellix Get tag details
+      summary: Get tag details
       description: >-
         Retrieve details of a specific tag including its name,
         description, and the criteria used for automatic device
@@ -244,7 +244,7 @@ paths:
           description: Tag not found
     delete:
       operationId: deleteTag
-      summary: Trellix Delete a tag
+      summary: Delete a tag
       description: >-
         Delete a tag from ePO SaaS. Removing a tag also removes
         the tag assignment from all associated devices.
@@ -261,7 +261,7 @@ paths:
   /epo/v2/groups:
     get:
       operationId: listGroups
-      summary: Trellix List device groups
+      summary: List device groups
       description: >-
         Retrieve the organizational hierarchy of device groups
         configured in ePO SaaS. Groups define the structure for
@@ -290,7 +290,7 @@ paths:
   /epo/v2/queries:
     get:
       operationId: listQueries
-      summary: Trellix List saved queries
+      summary: List saved queries
       description: >-
         Retrieve a list of saved queries available in ePO SaaS.
         Queries can be executed against the data store for reporting
@@ -319,7 +319,7 @@ paths:
   /epo/v2/queries/{queryId}/run:
     post:
       operationId: executeQuery
-      summary: Trellix Execute a saved query
+      summary: Execute a saved query
       description: >-
         Execute a saved query and return its results. Queries run
         against the ePO SaaS data store and can return device,
@@ -349,7 +349,7 @@ paths:
   /epo/v2/response-actions:
     post:
       operationId: createResponseAction
-      summary: Trellix Create a response action
+      summary: Create a response action
       description: >-
         Trigger an automated response action on one or more managed
         endpoints. Response actions include policy enforcement,

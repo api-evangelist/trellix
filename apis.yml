@@ -321,17 +321,17 @@ common:
     url: https://www.trellix.com/support/
   - type: Login
     url: https://sso.trellix.com/
-  - type: Sign Up
+  - type: SignUp
     url: https://developer.manage.trellix.com/
   - type: Community
     url: https://communitym.trellix.com/
-  - type: Status
+  - type: StatusPage
     url: https://status.trellix.com/
   - type: Blog
     url: https://www.trellix.com/blogs/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.trellix.com/en-us/about/legal/privacy.html
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.trellix.com/en-us/about/legal/terms-of-use.html
   - type: GitHubOrganization
     url: https://github.com/trellix-enterprise
@@ -359,7 +359,7 @@ common:
     url: json-schema/trellix-device-schema.json
   - type: JSONStructure
     url: json-structure/trellix-threat-structure.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/trellix-context.jsonld
   - type: SpectralRules
     url: rules/trellix-spectral-rules.yml

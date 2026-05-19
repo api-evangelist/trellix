@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trellix ePO SaaS API — Queries
+  description: 'Trellix ePO SaaS API — Queries. 2 operations. Lead operation: List saved queries. Self-contained Naftiko capability
+    covering one Trellix business surface.'
+  tags:
+  - Trellix
+  - Queries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRELLIX_API_KEY: TRELLIX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: epo-saas-queries
+    baseUri: https://api.manage.trellix.com
+    description: Trellix ePO SaaS API — Queries business capability. Self-contained, no shared references.
+    resources:
+    - name: epo-v2-queries
+      path: /epo/v2/queries
+      operations:
+      - name: listqueries
+        method: GET
+        description: List saved queries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: epo-v2-queries-queryId-run
+      path: /epo/v2/queries/{queryId}/run
+      operations:
+      - name: executequery
+        method: POST
+        description: Execute a saved query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TRELLIX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: epo-saas-queries-rest
+    port: 8080
+    description: REST adapter for Trellix ePO SaaS API — Queries. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/epo/v2/queries
+      name: epo-v2-queries
+      description: REST surface for epo-v2-queries.
+      operations:
+      - method: GET
+        name: listqueries
+        description: List saved queries
+        call: epo-saas-queries.listqueries
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/epo/v2/queries/{queryid}/run
+      name: epo-v2-queries-queryid-run
+      description: REST surface for epo-v2-queries-queryId-run.
+      operations:
+      - method: POST
+        name: executequery
+        description: Execute a saved query
+        call: epo-saas-queries.executequery
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: epo-saas-queries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trellix ePO SaaS API — Queries. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-saved-queries
+      description: List saved queries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: epo-saas-queries.listqueries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: execute-saved-query
+      description: Execute a saved query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: epo-saas-queries.executequery
+      outputParameters:
+      - type: object
+        mapping: $.

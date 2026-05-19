@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trellix EDR API — Reactions
+  description: 'Trellix EDR API — Reactions. 1 operations. Lead operation: Execute a response reaction. Self-contained Naftiko
+    capability covering one Trellix business surface.'
+  tags:
+  - Trellix
+  - Reactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRELLIX_API_KEY: TRELLIX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: edr-reactions
+    baseUri: https://api.manage.trellix.com
+    description: Trellix EDR API — Reactions business capability. Self-contained, no shared references.
+    resources:
+    - name: edr-v2-reactions
+      path: /edr/v2/reactions
+      operations:
+      - name: createreaction
+        method: POST
+        description: Execute a response reaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRELLIX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: edr-reactions-rest
+    port: 8080
+    description: REST adapter for Trellix EDR API — Reactions. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/edr/v2/reactions
+      name: edr-v2-reactions
+      description: REST surface for edr-v2-reactions.
+      operations:
+      - method: POST
+        name: createreaction
+        description: Execute a response reaction
+        call: edr-reactions.createreaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: edr-reactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trellix EDR API — Reactions. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: execute-response-reaction
+      description: Execute a response reaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: edr-reactions.createreaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Trellix ePO SaaS API — Response Actions
+  description: 'Trellix ePO SaaS API — Response Actions. 1 operations. Lead operation: Create a response action. Self-contained
+    Naftiko capability covering one Trellix business surface.'
+  tags:
+  - Trellix
+  - Response Actions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TRELLIX_API_KEY: TRELLIX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: epo-saas-response-actions
+    baseUri: https://api.manage.trellix.com
+    description: Trellix ePO SaaS API — Response Actions business capability. Self-contained, no shared references.
+    resources:
+    - name: epo-v2-response-actions
+      path: /epo/v2/response-actions
+      operations:
+      - name: createresponseaction
+        method: POST
+        description: Create a response action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TRELLIX_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: epo-saas-response-actions-rest
+    port: 8080
+    description: REST adapter for Trellix ePO SaaS API — Response Actions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/epo/v2/response-actions
+      name: epo-v2-response-actions
+      description: REST surface for epo-v2-response-actions.
+      operations:
+      - method: POST
+        name: createresponseaction
+        description: Create a response action
+        call: epo-saas-response-actions.createresponseaction
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: epo-saas-response-actions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Trellix ePO SaaS API — Response Actions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-response-action
+      description: Create a response action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: epo-saas-response-actions.createresponseaction
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

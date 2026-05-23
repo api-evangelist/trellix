@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Group",
+  "title": "Group",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the group"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the group"
+    },
+    "parentId": {
+      "type": "string",
+      "description": "Identifier of the parent group in the hierarchy"
+    },
+    "path": {
+      "type": "string",
+      "description": "Full path of the group in the organizational hierarchy"
+    },
+    "deviceCount": {
+      "type": "integer",
+      "description": "Number of devices assigned to this group"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ReactionCreate",
+  "title": "ReactionCreate",
+  "type": "object",
+  "required": [
+    "type",
+    "targetHost"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "kill_process",
+        "quarantine_file",
+        "collect_data",
+        "isolate_host"
+      ],
+      "description": "Type of response reaction to execute"
+    },
+    "targetHost": {
+      "type": "string",
+      "description": "Identifier of the host to target"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Additional parameters specific to the reaction type, such as process ID for kill_process or file path for quarantine_file."
+    }
+  }
+}

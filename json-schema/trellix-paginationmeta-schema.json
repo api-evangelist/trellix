@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaginationMeta",
+  "title": "PaginationMeta",
+  "type": "object",
+  "properties": {
+    "totalItems": {
+      "type": "integer",
+      "description": "Total number of items matching the query"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Number of items per page"
+    },
+    "offset": {
+      "type": "integer",
+      "description": "Number of items skipped"
+    }
+  }
+}

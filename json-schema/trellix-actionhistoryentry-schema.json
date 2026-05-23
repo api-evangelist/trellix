@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActionHistoryEntry",
+  "title": "ActionHistoryEntry",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the action"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of action executed"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "executing",
+        "completed",
+        "failed"
+      ],
+      "description": "Final status of the action"
+    },
+    "targetHost": {
+      "type": "string",
+      "description": "Hostname targeted by the action"
+    },
+    "initiatedBy": {
+      "type": "string",
+      "description": "User or system that initiated the action"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the action was initiated"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the action completed"
+    }
+  }
+}

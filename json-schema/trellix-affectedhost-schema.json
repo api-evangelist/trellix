@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AffectedHost",
+  "title": "AffectedHost",
+  "type": "object",
+  "properties": {
+    "hostName": {
+      "type": "string",
+      "description": "Hostname of the affected system"
+    },
+    "agentGuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "GUID of the endpoint agent"
+    },
+    "ipAddress": {
+      "type": "string",
+      "description": "IP address of the affected host"
+    },
+    "macAddresses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "MAC addresses of network interfaces"
+    },
+    "detectionCount": {
+      "type": "integer",
+      "description": "Number of detections on this host"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "description": "Highest severity detection on this host"
+    },
+    "firstDetected": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the first detection on this host"
+    },
+    "lastDetected": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the most recent detection"
+    }
+  }
+}

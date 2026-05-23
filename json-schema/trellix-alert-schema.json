@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Alert",
+  "title": "Alert",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the alert"
+    },
+    "traceId": {
+      "type": "string",
+      "description": "Trace identifier linking related events"
+    },
+    "eventType": {
+      "type": "string",
+      "description": "Type classification of the alert event"
+    },
+    "severity": {
+      "type": "integer",
+      "description": "Numeric severity score of the alert"
+    },
+    "processName": {
+      "type": "string",
+      "description": "Name of the process associated with the alert"
+    },
+    "commandLine": {
+      "type": "string",
+      "description": "Command line of the process"
+    },
+    "hashId": {
+      "type": "string",
+      "description": "Hash identifier of the process or file"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Network domain associated with the alert"
+    },
+    "hostName": {
+      "type": "string",
+      "description": "Hostname of the affected endpoint"
+    },
+    "userName": {
+      "type": "string",
+      "description": "User account context for the alert"
+    },
+    "detectedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the alert was generated"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Detection classification tags"
+    }
+  }
+}

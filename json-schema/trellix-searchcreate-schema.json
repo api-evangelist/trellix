@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SearchCreate",
+  "title": "SearchCreate",
+  "type": "object",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators."
+    },
+    "targetHosts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints."
+    }
+  }
+}

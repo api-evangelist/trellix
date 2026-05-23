@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Detection",
+  "title": "Detection",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the detection"
+    },
+    "threatId": {
+      "type": "string",
+      "description": "Identifier of the parent threat"
+    },
+    "sha256": {
+      "type": "string",
+      "description": "SHA256 hash of the detected file or artifact"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "description": "Severity ranking of the detection"
+    },
+    "processName": {
+      "type": "string",
+      "description": "Name of the process involved in the detection"
+    },
+    "commandLine": {
+      "type": "string",
+      "description": "Command line arguments of the detected process"
+    },
+    "hostName": {
+      "type": "string",
+      "description": "Hostname of the affected endpoint"
+    },
+    "agentGuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "GUID of the agent that reported the detection"
+    },
+    "detectedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the detection occurred"
+    },
+    "mitreAttack": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "MITRE ATT&CK technique tags"
+    }
+  }
+}

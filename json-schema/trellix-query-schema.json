@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Query",
+  "title": "Query",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the saved query"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the query"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what the query returns"
+    },
+    "targetType": {
+      "type": "string",
+      "description": "The data type targeted by the query"
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "public",
+        "private"
+      ],
+      "description": "Whether the query is shared or private"
+    }
+  }
+}

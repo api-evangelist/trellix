@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TagCreate",
+  "title": "TagCreate",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name for the new tag"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the tag purpose"
+    },
+    "criteria": {
+      "type": "string",
+      "description": "Optional criteria expression for automatic tag assignment to matching devices"
+    }
+  }
+}

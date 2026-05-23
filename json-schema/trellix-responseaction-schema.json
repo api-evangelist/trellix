@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ResponseAction",
+  "title": "ResponseAction",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the response action"
+    },
+    "actionType": {
+      "type": "string",
+      "description": "Type of response action triggered"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "completed",
+        "failed"
+      ],
+      "description": "Current status of the response action"
+    },
+    "targetDevices": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of device identifiers targeted by the action"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the action was created"
+    }
+  }
+}

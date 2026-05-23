@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ResponseActionCreate",
+  "title": "ResponseActionCreate",
+  "type": "object",
+  "required": [
+    "actionType",
+    "targetDevices"
+  ],
+  "properties": {
+    "actionType": {
+      "type": "string",
+      "enum": [
+        "wake_up_agent",
+        "run_scan",
+        "enforce_policy",
+        "collect_data"
+      ],
+      "description": "Type of response action to execute"
+    },
+    "targetDevices": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of device identifiers to target"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Additional parameters specific to the action type"
+    }
+  }
+}

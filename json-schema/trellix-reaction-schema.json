@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Reaction",
+  "title": "Reaction",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the reaction"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of response reaction executed"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "executing",
+        "completed",
+        "failed"
+      ],
+      "description": "Current execution status of the reaction"
+    },
+    "targetHost": {
+      "type": "string",
+      "description": "Host identifier targeted by the reaction"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the reaction was created"
+    }
+  }
+}

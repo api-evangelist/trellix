@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Search",
+  "title": "Search",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the search"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "completed",
+        "failed",
+        "cancelled"
+      ],
+      "description": "Current execution status of the search"
+    },
+    "query": {
+      "type": "string",
+      "description": "Search query expression"
+    },
+    "targetHosts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Target host identifiers for the search"
+    },
+    "matchCount": {
+      "type": "integer",
+      "description": "Number of matching results found"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the search was created"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the search completed"
+    }
+  }
+}

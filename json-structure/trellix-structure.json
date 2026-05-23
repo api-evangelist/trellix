@@ -1,0 +1,167 @@
+{
+  "provider": "Trellix",
+  "providerId": "trellix",
+  "kind": "json-structure",
+  "description": "Structural overview of the Trellix API surface; extracted from openapi/.",
+  "schemaCount": 10,
+  "operationCount": 10,
+  "schemas": [
+    {
+      "name": "Threat",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "Detection",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "Alert",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "AffectedHost",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Search",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "SearchCreate",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "query"
+      ]
+    },
+    {
+      "name": "Reaction",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ReactionCreate",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "type",
+        "targetHost"
+      ]
+    },
+    {
+      "name": "ActionHistoryEntry",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "PaginationMeta",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/edr/v2/threats",
+      "operationId": "listThreats",
+      "summary": "List detected threats",
+      "tags": [
+        "Threats"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/edr/v2/threats/{threatId}",
+      "operationId": "getThreat",
+      "summary": "Get threat details",
+      "tags": [
+        "Threats"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/edr/v2/detections",
+      "operationId": "listDetections",
+      "summary": "List detections",
+      "tags": [
+        "Detections"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/edr/v2/alerts",
+      "operationId": "listAlerts",
+      "summary": "List alerts",
+      "tags": [
+        "Alerts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/edr/v2/affectedhosts",
+      "operationId": "listAffectedHosts",
+      "summary": "List affected hosts",
+      "tags": [
+        "Affected Hosts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/edr/v2/searches",
+      "operationId": "listSearches",
+      "summary": "List searches",
+      "tags": [
+        "Searches"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/edr/v2/searches",
+      "operationId": "createSearch",
+      "summary": "Create a real-time search",
+      "tags": [
+        "Searches"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/edr/v2/searches/{searchId}",
+      "operationId": "getSearch",
+      "summary": "Get search status and results",
+      "tags": [
+        "Searches"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/edr/v2/reactions",
+      "operationId": "createReaction",
+      "summary": "Execute a response reaction",
+      "tags": [
+        "Reactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/edr/v2/actions",
+      "operationId": "listActionHistory",
+      "summary": "List action history",
+      "tags": [
+        "Action History"
+      ]
+    }
+  ]
+}

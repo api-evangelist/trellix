@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Event",
+  "title": "Event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the event"
+    },
+    "type": {
+      "type": "string",
+      "description": "Resource type identifier"
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time the event occurred"
+        },
+        "agentGuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "GUID of the agent that reported the event"
+        },
+        "analyzerName": {
+          "type": "string",
+          "description": "Name of the security analyzer that detected the event"
+        },
+        "analyzerVersion": {
+          "type": "string",
+          "description": "Version of the detecting analyzer"
+        },
+        "threatName": {
+          "type": "string",
+          "description": "Name or identifier of the detected threat"
+        },
+        "threatSeverity": {
+          "type": "string",
+          "description": "Severity level of the threat"
+        },
+        "threatCategory": {
+          "type": "string",
+          "description": "Category classification of the threat"
+        },
+        "targetFileName": {
+          "type": "string",
+          "description": "File name targeted by the threat"
+        },
+        "targetFilePath": {
+          "type": "string",
+          "description": "Full file path of the targeted file"
+        },
+        "detectionMethod": {
+          "type": "string",
+          "description": "Method used to detect the threat"
+        }
+      }
+    }
+  }
+}

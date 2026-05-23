@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Tag",
+  "title": "Tag",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the tag"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the tag"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the tag purpose"
+    },
+    "criteria": {
+      "type": "string",
+      "description": "Criteria expression for automatic tag assignment to matching devices"
+    }
+  }
+}

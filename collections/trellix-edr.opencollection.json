@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Threats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List detected threats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/threats",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return threats detected after this ISO 8601 timestamp."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "Filter threats by severity level"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of aggregated threats detected across managed endpoints. Threats are collections of related alerts grouped by Trellix correlation logic, including severity rankings, SHA256 hashes, and MITRE ATT&CK technique mappings."
+        },
+        {
+          "info": {
+            "name": "Get threat details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/threats/:threatId",
+            "params": [
+              {
+                "name": "threatId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the threat"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific threat including all associated alerts, affected hosts, MITRE ATT&CK mappings, and aggregated indicators of compromise."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Detections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List detections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/detections",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return detections that occurred after this ISO 8601 timestamp."
+              },
+              {
+                "name": "threatId",
+                "value": "",
+                "type": "query",
+                "description": "Filter detections associated with a specific threat"
+              }
+            ]
+          },
+          "docs": "Retrieve individual detection events across managed endpoints. Detections include SHA256 hashes, severity rankings, and MITRE ATT&CK technique tags associated with each event."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/alerts",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return alerts generated after this ISO 8601 timestamp."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "Filter alerts by severity level"
+              }
+            ]
+          },
+          "docs": "Retrieve discrete detection alerts containing process, user, and host context. Alerts include trace identifiers, detection dates, event types, severity scores, and detection tags."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Affected Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List affected hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/affectedhosts",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "threatId",
+                "value": "",
+                "type": "query",
+                "description": "Filter affected hosts by a specific threat"
+              }
+            ]
+          },
+          "docs": "Retrieve detection counts, severity rankings, and first detection timestamps for systems affected by threats. Provides a host-centric view of the threat landscape across managed endpoints."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Searches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List searches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/searches",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve the list of real-time searches and their current execution status."
+        },
+        {
+          "info": {
+            "name": "Create a real-time search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manage.trellix.com/edr/v2/searches",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a real-time search across managed endpoints to hunt for specific indicators of compromise such as file hashes, process names, or network connections. The search runs asynchronously and results are retrieved separately."
+        },
+        {
+          "info": {
+            "name": "Get search status and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/searches/:searchId",
+            "params": [
+              {
+                "name": "searchId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the real-time search"
+              }
+            ]
+          },
+          "docs": "Retrieve the current status and results of a real-time search. Results include matching endpoints and the specific indicators that were found during the search."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a response reaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manage.trellix.com/edr/v2/reactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a response reaction on a targeted endpoint, such as killing a process, quarantining a file, or collecting forensic data. Reactions are executed in the context of a real-time search session."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Action History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List action history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/actions",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return actions executed after this ISO 8601 timestamp."
+              }
+            ]
+          },
+          "docs": "Retrieve the history of response actions executed through the EDR platform, including their status and target details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

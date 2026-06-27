@@ -297,7 +297,7 @@ common:
     url: https://www.linkedin.com/company/trellixsecurity
   - type: Portal
     url: https://www.trellix.com/
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.manage.trellix.com/
   - type: Documentation
     url: https://docs.trellix.com/
@@ -309,7 +309,7 @@ common:
     url: https://www.trellix.com/support/
   - type: Login
     url: https://sso.trellix.com/
-  - type: SignUp
+  - type: Signup
     url: https://developer.manage.trellix.com/
   - type: Community
     url: https://communitym.trellix.com/

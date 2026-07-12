@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/trellix-edr-openapi.yml, openapi/trellix-epo-saas-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth 2.0 access token obtained through the client credentials flow with soc.act.tg
+    scope. Credentials are generated through the Trellix EDR Credential Generator.
+  sources:
+  - openapi/trellix-edr-openapi.yml
+  - openapi/trellix-epo-saas-openapi.yml

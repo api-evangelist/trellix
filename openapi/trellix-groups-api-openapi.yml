@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: Trellix EDR Action History Groups API
+  description: Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.
+  version: '2.0'
+  contact:
+    name: Trellix Support
+    url: https://www.trellix.com/support/
+  termsOfService: https://www.trellix.com/en-us/about/legal/terms-of-use.html
+servers:
+- url: https://api.manage.trellix.com
+  description: Trellix Cloud Management Platform
+security:
+- bearerAuth: []
+tags:
+- name: Groups
+  description: Manage device groups and organizational hierarchy within the ePO SaaS console.
+paths:
+  /epo/v2/groups:
+    get:
+      operationId: listGroups
+      summary: List device groups
+      description: Retrieve the organizational hierarchy of device groups configured in ePO SaaS. Groups define the structure for policy inheritance and reporting scope.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: List of device groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+  schemas:
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the group
+        name:
+          type: string
+          description: Display name of the group
+        parentId:
+          type: string
+          description: Identifier of the parent group in the hierarchy
+        path:
+          type: string
+          description: Full path of the group in the organizational hierarchy
+        deviceCount:
+          type: integer
+          description: Number of devices assigned to this group
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token obtained through the client credentials flow with soc.act.tg scope. Credentials are generated through the Trellix EDR Credential Generator.
+externalDocs:
+  description: Trellix EDR Product Guide
+  url: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide

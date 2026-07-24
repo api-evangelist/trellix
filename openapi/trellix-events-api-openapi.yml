@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Trellix EDR Action History Events API
+  description: Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.
+  version: '2.0'
+  contact:
+    name: Trellix Support
+    url: https://www.trellix.com/support/
+  termsOfService: https://www.trellix.com/en-us/about/legal/terms-of-use.html
+servers:
+- url: https://api.manage.trellix.com
+  description: Trellix Cloud Management Platform
+security:
+- bearerAuth: []
+tags:
+- name: Events
+  description: Retrieve threat events and security incidents detected across managed endpoints. Events have a 3-day retention period.
+paths:
+  /epo/v2/events:
+    get:
+      operationId: listEvents
+      summary: List threat events
+      description: Retrieve threat events detected across managed endpoints. Events include malware detections, policy violations, and other security incidents. The data retention period for events is 3 days.
+      tags:
+      - Events
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - name: since
+        in: query
+        description: Return events that occurred after this ISO 8601 timestamp. Maximum lookback is 3 days due to data retention limits.
+        schema:
+          type: string
+          format: date-time
+      - name: filter
+        in: query
+        description: Filter expression to narrow events by attributes such as severity, analyzer name, or agent GUID.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of threat events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Event'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '403':
+          description: Forbidden - insufficient scope permissions
+components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+  schemas:
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the event
+        type:
+          type: string
+          description: Resource type identifier
+        attributes:
+          type: object
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+              description: Time the event occurred
+            agentGuid:
+              type: string
+              format: uuid
+              description: GUID of the agent that reported the event
+            analyzerName:
+              type: string
+              description: Name of the security analyzer that detected the event
+            analyzerVersion:
+              type: string
+              description: Version of the detecting analyzer
+            threatName:
+              type: string
+              description: Name or identifier of the detected threat
+            threatSeverity:
+              type: string
+              description: Severity level of the threat
+            threatCategory:
+              type: string
+              description: Category classification of the threat
+            targetFileName:
+              type: string
+              description: File name targeted by the threat
+            targetFilePath:
+              type: string
+              description: Full file path of the targeted file
+            detectionMethod:
+              type: string
+              description: Method used to detect the threat
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token obtained through the client credentials flow with soc.act.tg scope. Credentials are generated through the Trellix EDR Credential Generator.
+externalDocs:
+  description: Trellix EDR Product Guide
+  url: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide

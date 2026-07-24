@@ -1,0 +1,176 @@
+openapi: 3.1.0
+info:
+  title: Trellix EDR Action History Devices API
+  description: Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.
+  version: '2.0'
+  contact:
+    name: Trellix Support
+    url: https://www.trellix.com/support/
+  termsOfService: https://www.trellix.com/en-us/about/legal/terms-of-use.html
+servers:
+- url: https://api.manage.trellix.com
+  description: Trellix Cloud Management Platform
+security:
+- bearerAuth: []
+tags:
+- name: Devices
+  description: Manage and query endpoint devices registered in ePO SaaS, including device attributes, agent status, and system information.
+paths:
+  /epo/v2/devices:
+    get:
+      operationId: listDevices
+      summary: List managed devices
+      description: Retrieve a paginated list of all endpoint devices registered and managed through ePO SaaS. Returns device attributes including name, agent GUID, tags, operating system, and last communication timestamp.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      - name: filter
+        in: query
+        description: Filter expression to narrow device results by attributes such as name, operating system, or agent status.
+        schema:
+          type: string
+      - name: sort
+        in: query
+        description: Sort order for results, specified as a field name with optional direction prefix (+ for ascending, - for descending).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Paginated list of managed devices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '403':
+          description: Forbidden - insufficient scope permissions
+  /epo/v2/devices/{deviceId}:
+    get:
+      operationId: getDevice
+      summary: Get device details
+      description: Retrieve detailed information about a specific managed device by its unique identifier. Returns comprehensive device attributes including hardware details, installed products, and agent status.
+      tags:
+      - Devices
+      parameters:
+      - $ref: '#/components/parameters/deviceId'
+      responses:
+        '200':
+          description: Device details returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Device'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Device not found
+components:
+  parameters:
+    deviceId:
+      name: deviceId
+      in: path
+      required: true
+      description: Unique identifier of the managed device
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+  schemas:
+    Device:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the device
+        type:
+          type: string
+          description: Resource type identifier
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Hostname or display name of the device
+            agentGuid:
+              type: string
+              format: uuid
+              description: Unique GUID assigned to the endpoint agent
+            agentVersion:
+              type: string
+              description: Version of the installed endpoint agent
+            operatingSystem:
+              type: string
+              description: Operating system name and version
+            ipAddress:
+              type: string
+              description: Primary IP address of the device
+            macAddress:
+              type: string
+              description: Primary MAC address of the device
+            domain:
+              type: string
+              description: Domain or workgroup the device belongs to
+            userName:
+              type: string
+              description: Last logged-in user name
+            lastUpdate:
+              type: string
+              format: date-time
+              description: Timestamp of the last agent communication
+            managed:
+              type: boolean
+              description: Whether the device is actively managed
+            tags:
+              type: array
+              items:
+                type: string
+              description: Tags assigned to this device
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token obtained through the client credentials flow with soc.act.tg scope. Credentials are generated through the Trellix EDR Credential Generator.
+externalDocs:
+  description: Trellix EDR Product Guide
+  url: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide

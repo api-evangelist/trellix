@@ -1,0 +1,188 @@
+openapi: 3.1.0
+info:
+  title: Trellix EDR Action History Searches API
+  description: Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.
+  version: '2.0'
+  contact:
+    name: Trellix Support
+    url: https://www.trellix.com/support/
+  termsOfService: https://www.trellix.com/en-us/about/legal/terms-of-use.html
+servers:
+- url: https://api.manage.trellix.com
+  description: Trellix Cloud Management Platform
+security:
+- bearerAuth: []
+tags:
+- name: Searches
+  description: Execute real-time searches across managed endpoints to hunt for indicators of compromise and suspicious activity.
+paths:
+  /edr/v2/searches:
+    post:
+      operationId: createSearch
+      summary: Create a real-time search
+      description: Initiate a real-time search across managed endpoints to hunt for specific indicators of compromise such as file hashes, process names, or network connections. The search runs asynchronously and results are retrieved separately.
+      tags:
+      - Searches
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchCreate'
+      responses:
+        '201':
+          description: Search initiated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Search'
+        '400':
+          description: Invalid search parameters
+        '401':
+          description: Unauthorized - invalid or expired access token
+    get:
+      operationId: listSearches
+      summary: List searches
+      description: Retrieve the list of real-time searches and their current execution status.
+      tags:
+      - Searches
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/offset'
+      responses:
+        '200':
+          description: Paginated list of searches
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Search'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+        '401':
+          description: Unauthorized - invalid or expired access token
+  /edr/v2/searches/{searchId}:
+    get:
+      operationId: getSearch
+      summary: Get search status and results
+      description: Retrieve the current status and results of a real-time search. Results include matching endpoints and the specific indicators that were found during the search.
+      tags:
+      - Searches
+      parameters:
+      - $ref: '#/components/parameters/searchId'
+      responses:
+        '200':
+          description: Search status and results returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Search'
+        '401':
+          description: Unauthorized - invalid or expired access token
+        '404':
+          description: Search not found
+components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    searchId:
+      name: searchId
+      in: path
+      required: true
+      description: Unique identifier of the real-time search
+      schema:
+        type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+  schemas:
+    Search:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the search
+        status:
+          type: string
+          enum:
+          - pending
+          - running
+          - completed
+          - failed
+          - cancelled
+          description: Current execution status of the search
+        query:
+          type: string
+          description: Search query expression
+        targetHosts:
+          type: array
+          items:
+            type: string
+          description: Target host identifiers for the search
+        matchCount:
+          type: integer
+          description: Number of matching results found
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the search was created
+        completedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the search completed
+    SearchCreate:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators.
+        targetHosts:
+          type: array
+          items:
+            type: string
+          description: Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints.
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token obtained through the client credentials flow with soc.act.tg scope. Credentials are generated through the Trellix EDR Credential Generator.
+externalDocs:
+  description: Trellix EDR Product Guide
+  url: https://docs.trellix.com/bundle/mvision-endpoint-detection-and-response-product-guide

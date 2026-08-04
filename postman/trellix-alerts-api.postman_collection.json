@@ -1,0 +1,235 @@
+{
+  "info": {
+    "_postman_id": "74c725dc-71e8-418b-a165-a055af6621d5",
+    "name": "Trellix EDR Action History Alerts API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:36.000Z",
+    "updatedAt": "2026-07-28T03:18:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74c725dc-71e8-418b-a165-a055af6621d5"
+  },
+  "item": [
+    {
+      "name": "edr",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "alerts",
+              "item": [
+                {
+                  "name": "List alerts",
+                  "id": "a9da8821-c0de-46d0-9022-f21af3d8cd76",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edr/v2/alerts?limit=25&offset=0&since=<dateTime>&severity=critical",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edr",
+                        "v2",
+                        "alerts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Return alerts generated after this ISO 8601 timestamp.",
+                          "key": "since",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Filter alerts by severity level",
+                          "key": "severity",
+                          "value": "critical"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve discrete detection alerts containing process, user, and host context. Alerts include trace identifiers, detection dates, event types, severity scores, and detection tags."
+                  },
+                  "response": [
+                    {
+                      "id": "0e744bef-5a3f-4064-b109-9f9fee3e3bcd",
+                      "name": "Paginated list of alerts",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/alerts?limit=25&offset=0&since=<dateTime>&severity=critical",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "alerts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Return alerts generated after this ISO 8601 timestamp.",
+                              "key": "since",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter alerts by severity level",
+                              "key": "severity",
+                              "value": "critical"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"eventType\": \"<string>\",\n      \"severity\": \"<integer>\",\n      \"processName\": \"<string>\",\n      \"commandLine\": \"<string>\",\n      \"hashId\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"detectedAt\": \"<dateTime>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"eventType\": \"<string>\",\n      \"severity\": \"<integer>\",\n      \"processName\": \"<string>\",\n      \"commandLine\": \"<string>\",\n      \"hashId\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"hostName\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"detectedAt\": \"<dateTime>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:37.000Z",
+                      "updatedAt": "2026-07-28T03:18:37.000Z",
+                      "uid": "35240-0e744bef-5a3f-4064-b109-9f9fee3e3bcd"
+                    },
+                    {
+                      "id": "a72fe1c9-a6ba-4200-9142-e6ed64a42b21",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/alerts?limit=25&offset=0&since=<dateTime>&severity=critical",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "alerts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Return alerts generated after this ISO 8601 timestamp.",
+                              "key": "since",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter alerts by severity level",
+                              "key": "severity",
+                              "value": "critical"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:37.000Z",
+                      "updatedAt": "2026-07-28T03:18:37.000Z",
+                      "uid": "35240-a72fe1c9-a6ba-4200-9142-e6ed64a42b21"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:37.000Z",
+                  "updatedAt": "2026-07-28T03:18:37.000Z",
+                  "uid": "35240-a9da8821-c0de-46d0-9022-f21af3d8cd76"
+                }
+              ],
+              "id": "b52ef2da-63bb-4464-bf4f-c42a941dacb7",
+              "createdAt": "2026-07-28T03:18:37.000Z",
+              "updatedAt": "2026-07-28T03:18:37.000Z",
+              "uid": "35240-b52ef2da-63bb-4464-bf4f-c42a941dacb7"
+            }
+          ],
+          "id": "c8cd0b31-8e6d-4f17-b619-3e5ac1e8716d",
+          "createdAt": "2026-07-28T03:18:37.000Z",
+          "updatedAt": "2026-07-28T03:18:37.000Z",
+          "uid": "35240-c8cd0b31-8e6d-4f17-b619-3e5ac1e8716d"
+        }
+      ],
+      "id": "54e96726-88e1-4c82-85bd-a0c4bb216682",
+      "createdAt": "2026-07-28T03:18:37.000Z",
+      "updatedAt": "2026-07-28T03:18:37.000Z",
+      "uid": "35240-54e96726-88e1-4c82-85bd-a0c4bb216682"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

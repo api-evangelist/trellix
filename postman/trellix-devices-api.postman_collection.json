@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "b2a7a6dc-3d6a-4d57-8824-71e55cccffe4",
+    "name": "Trellix EDR Action History Devices API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:38.000Z",
+    "updatedAt": "2026-07-28T03:18:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b2a7a6dc-3d6a-4d57-8824-71e55cccffe4"
+  },
+  "item": [
+    {
+      "name": "epo",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "devices",
+              "item": [
+                {
+                  "name": "{deviceId}",
+                  "item": [
+                    {
+                      "name": "Get device details",
+                      "id": "f86142a8-5e56-4985-9036-adbcba0e5ea1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/devices/:deviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "devices",
+                            ":deviceId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "23c4556e-0baf-4679-82a9-2e4bbfdb95f4",
+                              "key": "deviceId",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the managed device"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve detailed information about a specific managed device by its unique identifier. Returns comprehensive device attributes including hardware details, installed products, and agent status."
+                      },
+                      "response": [
+                        {
+                          "id": "8476c613-3e7f-493b-aa97-101e6f8536b9",
+                          "name": "Device details returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/devices/:deviceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "devices",
+                                ":deviceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"agentGuid\": \"<uuid>\",\n      \"agentVersion\": \"<string>\",\n      \"operatingSystem\": \"<string>\",\n      \"ipAddress\": \"<string>\",\n      \"macAddress\": \"<string>\",\n      \"domain\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"lastUpdate\": \"<dateTime>\",\n      \"managed\": \"<boolean>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T03:18:38.000Z",
+                          "updatedAt": "2026-07-28T03:18:38.000Z",
+                          "uid": "35240-8476c613-3e7f-493b-aa97-101e6f8536b9"
+                        },
+                        {
+                          "id": "a7766a07-86f2-46cf-b9ad-23e75af8d3c9",
+                          "name": "Unauthorized - invalid or expired access token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/devices/:deviceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "devices",
+                                ":deviceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:38.000Z",
+                          "updatedAt": "2026-07-28T03:18:38.000Z",
+                          "uid": "35240-a7766a07-86f2-46cf-b9ad-23e75af8d3c9"
+                        },
+                        {
+                          "id": "ab17d8ea-99af-460f-9223-310711e9f39b",
+                          "name": "Device not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/devices/:deviceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "devices",
+                                ":deviceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "deviceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:38.000Z",
+                          "updatedAt": "2026-07-28T03:18:38.000Z",
+                          "uid": "35240-ab17d8ea-99af-460f-9223-310711e9f39b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:18:38.000Z",
+                      "updatedAt": "2026-07-28T03:18:38.000Z",
+                      "uid": "35240-f86142a8-5e56-4985-9036-adbcba0e5ea1"
+                    }
+                  ],
+                  "id": "bd219d89-eda3-4c88-b662-5068be52b2bc",
+                  "createdAt": "2026-07-28T03:18:38.000Z",
+                  "updatedAt": "2026-07-28T03:18:38.000Z",
+                  "uid": "35240-bd219d89-eda3-4c88-b662-5068be52b2bc"
+                },
+                {
+                  "name": "List managed devices",
+                  "id": "d4b46c2c-e02c-4c3a-bcd2-6f870177258a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/epo/v2/devices?limit=25&offset=0&filter=<string>&sort=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "epo",
+                        "v2",
+                        "devices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter expression to narrow device results by attributes such as name, operating system, or agent status.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Sort order for results, specified as a field name with optional direction prefix (+ for ascending, - for descending).",
+                          "key": "sort",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a paginated list of all endpoint devices registered and managed through ePO SaaS. Returns device attributes including name, agent GUID, tags, operating system, and last communication timestamp."
+                  },
+                  "response": [
+                    {
+                      "id": "8acd9a35-82b5-4b67-a903-3a126f7bf340",
+                      "name": "Paginated list of managed devices",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/devices?limit=25&offset=0&filter=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "devices"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter expression to narrow device results by attributes such as name, operating system, or agent status.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort order for results, specified as a field name with optional direction prefix (+ for ascending, - for descending).",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"name\": \"<string>\",\n        \"agentGuid\": \"<uuid>\",\n        \"agentVersion\": \"<string>\",\n        \"operatingSystem\": \"<string>\",\n        \"ipAddress\": \"<string>\",\n        \"macAddress\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"userName\": \"<string>\",\n        \"lastUpdate\": \"<dateTime>\",\n        \"managed\": \"<boolean>\",\n        \"tags\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"attributes\": {\n        \"name\": \"<string>\",\n        \"agentGuid\": \"<uuid>\",\n        \"agentVersion\": \"<string>\",\n        \"operatingSystem\": \"<string>\",\n        \"ipAddress\": \"<string>\",\n        \"macAddress\": \"<string>\",\n        \"domain\": \"<string>\",\n        \"userName\": \"<string>\",\n        \"lastUpdate\": \"<dateTime>\",\n        \"managed\": \"<boolean>\",\n        \"tags\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:38.000Z",
+                      "updatedAt": "2026-07-28T03:18:38.000Z",
+                      "uid": "35240-8acd9a35-82b5-4b67-a903-3a126f7bf340"
+                    },
+                    {
+                      "id": "29d9929e-8d2d-4917-89d5-0c4ced9a7a3d",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/devices?limit=25&offset=0&filter=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "devices"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter expression to narrow device results by attributes such as name, operating system, or agent status.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort order for results, specified as a field name with optional direction prefix (+ for ascending, - for descending).",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:38.000Z",
+                      "updatedAt": "2026-07-28T03:18:38.000Z",
+                      "uid": "35240-29d9929e-8d2d-4917-89d5-0c4ced9a7a3d"
+                    },
+                    {
+                      "id": "9c6784ac-368f-4769-b994-7aa2f89da13c",
+                      "name": "Forbidden - insufficient scope permissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/devices?limit=25&offset=0&filter=<string>&sort=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "devices"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter expression to narrow device results by attributes such as name, operating system, or agent status.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Sort order for results, specified as a field name with optional direction prefix (+ for ascending, - for descending).",
+                              "key": "sort",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:38.000Z",
+                      "updatedAt": "2026-07-28T03:18:38.000Z",
+                      "uid": "35240-9c6784ac-368f-4769-b994-7aa2f89da13c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:38.000Z",
+                  "updatedAt": "2026-07-28T03:18:38.000Z",
+                  "uid": "35240-d4b46c2c-e02c-4c3a-bcd2-6f870177258a"
+                }
+              ],
+              "id": "cf3e645a-5bdf-44fd-b9a5-81a4a72d5cc5",
+              "createdAt": "2026-07-28T03:18:38.000Z",
+              "updatedAt": "2026-07-28T03:18:38.000Z",
+              "uid": "35240-cf3e645a-5bdf-44fd-b9a5-81a4a72d5cc5"
+            }
+          ],
+          "id": "74a88834-7250-44b0-acec-c6d33427b8e0",
+          "createdAt": "2026-07-28T03:18:38.000Z",
+          "updatedAt": "2026-07-28T03:18:38.000Z",
+          "uid": "35240-74a88834-7250-44b0-acec-c6d33427b8e0"
+        }
+      ],
+      "id": "a4c021c7-1ec4-4be2-a96f-ac1b8eef180f",
+      "createdAt": "2026-07-28T03:18:38.000Z",
+      "updatedAt": "2026-07-28T03:18:38.000Z",
+      "uid": "35240-a4c021c7-1ec4-4be2-a96f-ac1b8eef180f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

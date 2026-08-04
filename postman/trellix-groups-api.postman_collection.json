@@ -1,0 +1,205 @@
+{
+  "info": {
+    "_postman_id": "9c0d4bb6-d78d-4b8f-a031-92ef5e502dc6",
+    "name": "Trellix EDR Action History Groups API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:43.000Z",
+    "updatedAt": "2026-07-28T03:18:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9c0d4bb6-d78d-4b8f-a031-92ef5e502dc6"
+  },
+  "item": [
+    {
+      "name": "epo",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "groups",
+              "item": [
+                {
+                  "name": "List device groups",
+                  "id": "6d36d99d-ceb7-4e4d-bb9d-be50c4a3d606",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/epo/v2/groups?limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "epo",
+                        "v2",
+                        "groups"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the organizational hierarchy of device groups configured in ePO SaaS. Groups define the structure for policy inheritance and reporting scope."
+                  },
+                  "response": [
+                    {
+                      "id": "26cc165a-0bc8-4bf9-8760-e86262363615",
+                      "name": "List of device groups",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/groups?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "groups"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"parentId\": \"<string>\",\n      \"path\": \"<string>\",\n      \"deviceCount\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"parentId\": \"<string>\",\n      \"path\": \"<string>\",\n      \"deviceCount\": \"<integer>\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:43.000Z",
+                      "updatedAt": "2026-07-28T03:18:43.000Z",
+                      "uid": "35240-26cc165a-0bc8-4bf9-8760-e86262363615"
+                    },
+                    {
+                      "id": "a7f50db1-9434-4343-8e61-6d25b244f9c8",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/groups?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "groups"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:43.000Z",
+                      "updatedAt": "2026-07-28T03:18:43.000Z",
+                      "uid": "35240-a7f50db1-9434-4343-8e61-6d25b244f9c8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:43.000Z",
+                  "updatedAt": "2026-07-28T03:18:43.000Z",
+                  "uid": "35240-6d36d99d-ceb7-4e4d-bb9d-be50c4a3d606"
+                }
+              ],
+              "id": "b8678098-dc89-4c09-a781-23def603ccd9",
+              "createdAt": "2026-07-28T03:18:43.000Z",
+              "updatedAt": "2026-07-28T03:18:43.000Z",
+              "uid": "35240-b8678098-dc89-4c09-a781-23def603ccd9"
+            }
+          ],
+          "id": "da2069a4-f0ba-4ed2-ac21-7c7c6efd464e",
+          "createdAt": "2026-07-28T03:18:43.000Z",
+          "updatedAt": "2026-07-28T03:18:43.000Z",
+          "uid": "35240-da2069a4-f0ba-4ed2-ac21-7c7c6efd464e"
+        }
+      ],
+      "id": "e5a0366d-ef87-43a9-a14c-c2609540bef2",
+      "createdAt": "2026-07-28T03:18:43.000Z",
+      "updatedAt": "2026-07-28T03:18:43.000Z",
+      "uid": "35240-e5a0366d-ef87-43a9-a14c-c2609540bef2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

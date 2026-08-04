@@ -1,0 +1,751 @@
+{
+  "info": {
+    "_postman_id": "8ad53100-3da0-42e2-b45b-a62958e4933a",
+    "name": "Trellix EDR Action History Epo API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:41.000Z",
+    "updatedAt": "2026-07-28T03:18:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8ad53100-3da0-42e2-b45b-a62958e4933a"
+  },
+  "item": [
+    {
+      "name": "epo",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "tags",
+              "item": [
+                {
+                  "name": "{tagId}",
+                  "item": [
+                    {
+                      "name": "Get tag details",
+                      "id": "f44054c3-3dab-4d21-9c26-52af7f9cecf7",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "tags",
+                            ":tagId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a2983ab4-1208-4b18-8866-0a06da1828e2",
+                              "key": "tagId",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the tag"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details of a specific tag including its name, description, and the criteria used for automatic device assignment."
+                      },
+                      "response": [
+                        {
+                          "id": "15e1f6f0-1ee7-4a27-a06a-3c610981c16b",
+                          "name": "Tag details returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "tags",
+                                ":tagId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tagId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"criteria\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:18:41.000Z",
+                          "updatedAt": "2026-07-28T03:18:41.000Z",
+                          "uid": "35240-15e1f6f0-1ee7-4a27-a06a-3c610981c16b"
+                        },
+                        {
+                          "id": "fe55b9cd-c3df-4450-9a45-b0cba0be58f3",
+                          "name": "Unauthorized - invalid or expired access token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "tags",
+                                ":tagId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tagId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:41.000Z",
+                          "updatedAt": "2026-07-28T03:18:41.000Z",
+                          "uid": "35240-fe55b9cd-c3df-4450-9a45-b0cba0be58f3"
+                        },
+                        {
+                          "id": "44ec0b72-ff84-4025-9566-452881dfa1cc",
+                          "name": "Tag not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "tags",
+                                ":tagId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tagId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:41.000Z",
+                          "updatedAt": "2026-07-28T03:18:41.000Z",
+                          "uid": "35240-44ec0b72-ff84-4025-9566-452881dfa1cc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:18:41.000Z",
+                      "updatedAt": "2026-07-28T03:18:41.000Z",
+                      "uid": "35240-f44054c3-3dab-4d21-9c26-52af7f9cecf7"
+                    },
+                    {
+                      "name": "Delete a tag",
+                      "id": "eb73fb92-53e9-477a-ab70-9d680c833468",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "tags",
+                            ":tagId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "facbd671-45eb-41c4-a5cc-9d0d7c95f015",
+                              "key": "tagId",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the tag"
+                            }
+                          ]
+                        },
+                        "description": "Delete a tag from ePO SaaS. Removing a tag also removes the tag assignment from all associated devices."
+                      },
+                      "response": [
+                        {
+                          "id": "a96230d1-6bb3-4811-88a8-4f048cfef559",
+                          "name": "Tag deleted successfully",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "tags",
+                                ":tagId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tagId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:41.000Z",
+                          "updatedAt": "2026-07-28T03:18:41.000Z",
+                          "uid": "35240-a96230d1-6bb3-4811-88a8-4f048cfef559"
+                        },
+                        {
+                          "id": "07144254-6724-4fc8-b035-86916ad0c4c1",
+                          "name": "Unauthorized - invalid or expired access token",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "tags",
+                                ":tagId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tagId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:41.000Z",
+                          "updatedAt": "2026-07-28T03:18:41.000Z",
+                          "uid": "35240-07144254-6724-4fc8-b035-86916ad0c4c1"
+                        },
+                        {
+                          "id": "134d73ef-d02b-4d98-9f80-babf52d21935",
+                          "name": "Tag not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/tags/:tagId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "tags",
+                                ":tagId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tagId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:41.000Z",
+                          "updatedAt": "2026-07-28T03:18:41.000Z",
+                          "uid": "35240-134d73ef-d02b-4d98-9f80-babf52d21935"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:18:41.000Z",
+                      "updatedAt": "2026-07-28T03:18:41.000Z",
+                      "uid": "35240-eb73fb92-53e9-477a-ab70-9d680c833468"
+                    }
+                  ],
+                  "id": "af962653-fabe-4b49-8c01-79779c1929ed",
+                  "createdAt": "2026-07-28T03:18:41.000Z",
+                  "updatedAt": "2026-07-28T03:18:41.000Z",
+                  "uid": "35240-af962653-fabe-4b49-8c01-79779c1929ed"
+                },
+                {
+                  "name": "List tags",
+                  "id": "530482c5-c5d7-4878-834a-0b52bef07f6a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/epo/v2/tags?limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "epo",
+                        "v2",
+                        "tags"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve all tags configured in ePO SaaS. Tags are used to organize and group managed devices for policy assignment and reporting purposes."
+                  },
+                  "response": [
+                    {
+                      "id": "436bd153-c850-4894-a76a-10f61e7ac25b",
+                      "name": "List of configured tags",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/tags?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "tags"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"criteria\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"criteria\": \"<string>\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:41.000Z",
+                      "updatedAt": "2026-07-28T03:18:41.000Z",
+                      "uid": "35240-436bd153-c850-4894-a76a-10f61e7ac25b"
+                    },
+                    {
+                      "id": "bcff1be3-143e-4501-b63b-be41f751e171",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/tags?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "tags"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:41.000Z",
+                      "updatedAt": "2026-07-28T03:18:41.000Z",
+                      "uid": "35240-bcff1be3-143e-4501-b63b-be41f751e171"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:41.000Z",
+                  "updatedAt": "2026-07-28T03:18:41.000Z",
+                  "uid": "35240-530482c5-c5d7-4878-834a-0b52bef07f6a"
+                },
+                {
+                  "name": "Create a tag",
+                  "id": "e972d768-6e0e-4e1d-af09-cac5eb78c182",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"criteria\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/epo/v2/tags",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "epo",
+                        "v2",
+                        "tags"
+                      ]
+                    },
+                    "description": "Create a new tag in ePO SaaS for organizing managed devices. Tags can be applied to devices manually or through automated criteria-based assignment rules."
+                  },
+                  "response": [
+                    {
+                      "id": "5b7cb6d4-9fa3-478f-afb7-55d9f904c9e0",
+                      "name": "Tag created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"criteria\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/tags",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "tags"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"criteria\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:41.000Z",
+                      "updatedAt": "2026-07-28T03:18:41.000Z",
+                      "uid": "35240-5b7cb6d4-9fa3-478f-afb7-55d9f904c9e0"
+                    },
+                    {
+                      "id": "b5d986d9-d603-4027-8387-fb752d3aa366",
+                      "name": "Invalid tag data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"criteria\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/tags",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "tags"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:41.000Z",
+                      "updatedAt": "2026-07-28T03:18:41.000Z",
+                      "uid": "35240-b5d986d9-d603-4027-8387-fb752d3aa366"
+                    },
+                    {
+                      "id": "bc0390fb-523c-43b9-9105-f68d9245049b",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"criteria\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/tags",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "tags"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:41.000Z",
+                      "updatedAt": "2026-07-28T03:18:41.000Z",
+                      "uid": "35240-bc0390fb-523c-43b9-9105-f68d9245049b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:41.000Z",
+                  "updatedAt": "2026-07-28T03:18:41.000Z",
+                  "uid": "35240-e972d768-6e0e-4e1d-af09-cac5eb78c182"
+                }
+              ],
+              "id": "22c1ee35-93e1-4c2c-8b6d-ad3dcdf0f43f",
+              "createdAt": "2026-07-28T03:18:41.000Z",
+              "updatedAt": "2026-07-28T03:18:41.000Z",
+              "uid": "35240-22c1ee35-93e1-4c2c-8b6d-ad3dcdf0f43f"
+            }
+          ],
+          "id": "1757a609-ef82-408d-beb3-00b7a97308fa",
+          "createdAt": "2026-07-28T03:18:41.000Z",
+          "updatedAt": "2026-07-28T03:18:41.000Z",
+          "uid": "35240-1757a609-ef82-408d-beb3-00b7a97308fa"
+        }
+      ],
+      "id": "b585756c-ffe4-498f-bf36-412a0d6a3e9c",
+      "createdAt": "2026-07-28T03:18:41.000Z",
+      "updatedAt": "2026-07-28T03:18:41.000Z",
+      "uid": "35240-b585756c-ffe4-498f-bf36-412a0d6a3e9c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

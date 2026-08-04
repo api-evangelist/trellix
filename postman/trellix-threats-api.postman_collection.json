@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "36234f62-1684-4344-8877-0d4e6cda30c5",
+    "name": "Trellix EDR Action History Threats API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:48.000Z",
+    "updatedAt": "2026-07-28T03:18:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-36234f62-1684-4344-8877-0d4e6cda30c5"
+  },
+  "item": [
+    {
+      "name": "edr",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "threats",
+              "item": [
+                {
+                  "name": "{threatId}",
+                  "item": [
+                    {
+                      "name": "Get threat details",
+                      "id": "3132b8d6-7257-432c-bf52-19ecad787c9e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/threats/:threatId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "threats",
+                            ":threatId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8e19be0e-c69c-496f-97bb-06218011f775",
+                              "key": "threatId",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier of the threat"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve detailed information about a specific threat including all associated alerts, affected hosts, MITRE ATT&CK mappings, and aggregated indicators of compromise."
+                      },
+                      "response": [
+                        {
+                          "id": "9b981162-40d0-4e39-aaa8-454aa0816307",
+                          "name": "Threat details returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/edr/v2/threats/:threatId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "edr",
+                                "v2",
+                                "threats",
+                                ":threatId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "threatId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"severity\": \"critical\",\n    \"sha256\": \"<string>\",\n    \"sha1\": \"<string>\",\n    \"md5\": \"<string>\",\n    \"aggregationKey\": \"<string>\",\n    \"mitreAttack\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"detectionCount\": \"<integer>\",\n    \"affectedHostCount\": \"<integer>\",\n    \"firstDetected\": \"<dateTime>\",\n    \"lastDetected\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:18:49.000Z",
+                          "updatedAt": "2026-07-28T03:18:49.000Z",
+                          "uid": "35240-9b981162-40d0-4e39-aaa8-454aa0816307"
+                        },
+                        {
+                          "id": "a435ebca-da4e-4b9c-98f6-b740ed64c2de",
+                          "name": "Unauthorized - invalid or expired access token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/edr/v2/threats/:threatId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "edr",
+                                "v2",
+                                "threats",
+                                ":threatId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "threatId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:49.000Z",
+                          "updatedAt": "2026-07-28T03:18:49.000Z",
+                          "uid": "35240-a435ebca-da4e-4b9c-98f6-b740ed64c2de"
+                        },
+                        {
+                          "id": "93e6f592-d70e-455b-876a-1b47948c2fc6",
+                          "name": "Threat not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/edr/v2/threats/:threatId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "edr",
+                                "v2",
+                                "threats",
+                                ":threatId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "threatId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:18:49.000Z",
+                          "updatedAt": "2026-07-28T03:18:49.000Z",
+                          "uid": "35240-93e6f592-d70e-455b-876a-1b47948c2fc6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:18:48.000Z",
+                      "updatedAt": "2026-07-28T03:18:48.000Z",
+                      "uid": "35240-3132b8d6-7257-432c-bf52-19ecad787c9e"
+                    }
+                  ],
+                  "id": "b94bf585-591c-4200-aade-c77d9d73f0e5",
+                  "createdAt": "2026-07-28T03:18:48.000Z",
+                  "updatedAt": "2026-07-28T03:18:48.000Z",
+                  "uid": "35240-b94bf585-591c-4200-aade-c77d9d73f0e5"
+                },
+                {
+                  "name": "List detected threats",
+                  "id": "fb9b0bfa-ab89-453c-adb9-ac0040498512",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edr/v2/threats?limit=25&offset=0&since=<dateTime>&severity=critical",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edr",
+                        "v2",
+                        "threats"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Return threats detected after this ISO 8601 timestamp.",
+                          "key": "since",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Filter threats by severity level",
+                          "key": "severity",
+                          "value": "critical"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of aggregated threats detected across managed endpoints. Threats are collections of related alerts grouped by Trellix correlation logic, including severity rankings, SHA256 hashes, and MITRE ATT&CK technique mappings."
+                  },
+                  "response": [
+                    {
+                      "id": "d6789b5c-32f4-466b-8ba4-23f76b51d788",
+                      "name": "Paginated list of detected threats",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/threats?limit=25&offset=0&since=<dateTime>&severity=critical",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "threats"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Return threats detected after this ISO 8601 timestamp.",
+                              "key": "since",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter threats by severity level",
+                              "key": "severity",
+                              "value": "critical"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"severity\": \"high\",\n      \"sha256\": \"<string>\",\n      \"sha1\": \"<string>\",\n      \"md5\": \"<string>\",\n      \"aggregationKey\": \"<string>\",\n      \"mitreAttack\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detectionCount\": \"<integer>\",\n      \"affectedHostCount\": \"<integer>\",\n      \"firstDetected\": \"<dateTime>\",\n      \"lastDetected\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"severity\": \"medium\",\n      \"sha256\": \"<string>\",\n      \"sha1\": \"<string>\",\n      \"md5\": \"<string>\",\n      \"aggregationKey\": \"<string>\",\n      \"mitreAttack\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detectionCount\": \"<integer>\",\n      \"affectedHostCount\": \"<integer>\",\n      \"firstDetected\": \"<dateTime>\",\n      \"lastDetected\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:49.000Z",
+                      "updatedAt": "2026-07-28T03:18:49.000Z",
+                      "uid": "35240-d6789b5c-32f4-466b-8ba4-23f76b51d788"
+                    },
+                    {
+                      "id": "b4a82bf1-642d-4e48-a5e8-7638254f0583",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/threats?limit=25&offset=0&since=<dateTime>&severity=critical",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "threats"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Return threats detected after this ISO 8601 timestamp.",
+                              "key": "since",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter threats by severity level",
+                              "key": "severity",
+                              "value": "critical"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:49.000Z",
+                      "updatedAt": "2026-07-28T03:18:49.000Z",
+                      "uid": "35240-b4a82bf1-642d-4e48-a5e8-7638254f0583"
+                    },
+                    {
+                      "id": "af1e8a5c-15ce-42a8-b75f-4611e67bb981",
+                      "name": "Forbidden - insufficient scope permissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/threats?limit=25&offset=0&since=<dateTime>&severity=critical",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "threats"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Return threats detected after this ISO 8601 timestamp.",
+                              "key": "since",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Filter threats by severity level",
+                              "key": "severity",
+                              "value": "critical"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:49.000Z",
+                      "updatedAt": "2026-07-28T03:18:49.000Z",
+                      "uid": "35240-af1e8a5c-15ce-42a8-b75f-4611e67bb981"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:48.000Z",
+                  "updatedAt": "2026-07-28T03:18:48.000Z",
+                  "uid": "35240-fb9b0bfa-ab89-453c-adb9-ac0040498512"
+                }
+              ],
+              "id": "ee6244d5-5c6f-4fe5-adc3-899ee4d3a7fa",
+              "createdAt": "2026-07-28T03:18:48.000Z",
+              "updatedAt": "2026-07-28T03:18:48.000Z",
+              "uid": "35240-ee6244d5-5c6f-4fe5-adc3-899ee4d3a7fa"
+            }
+          ],
+          "id": "160793ba-b13f-410a-b925-e8230da52494",
+          "createdAt": "2026-07-28T03:18:48.000Z",
+          "updatedAt": "2026-07-28T03:18:48.000Z",
+          "uid": "35240-160793ba-b13f-410a-b925-e8230da52494"
+        }
+      ],
+      "id": "2030cc90-d741-467a-a494-4700d83191ba",
+      "createdAt": "2026-07-28T03:18:48.000Z",
+      "updatedAt": "2026-07-28T03:18:48.000Z",
+      "uid": "35240-2030cc90-d741-467a-a494-4700d83191ba"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

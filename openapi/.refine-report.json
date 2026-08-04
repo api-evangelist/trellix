@@ -1,0 +1,38 @@
+{
+  "provider": "trellix",
+  "sources": [
+    "trellix-action-history-api-openapi.yml",
+    "trellix-affected-hosts-api-openapi.yml",
+    "trellix-alerts-api-openapi.yml",
+    "trellix-detections-api-openapi.yml",
+    "trellix-devices-api-openapi.yml",
+    "trellix-epo-api-openapi.yml",
+    "trellix-events-api-openapi.yml",
+    "trellix-groups-api-openapi.yml",
+    "trellix-queries-api-openapi.yml",
+    "trellix-reactions-api-openapi.yml",
+    "trellix-response-actions-api-openapi.yml",
+    "trellix-searches-api-openapi.yml",
+    "trellix-threats-api-openapi.yml"
+  ],
+  "outputs": [
+    "trellix-action-history-api-openapi.yml",
+    "trellix-affected-hosts-api-openapi.yml",
+    "trellix-alerts-api-openapi.yml",
+    "trellix-detections-api-openapi.yml",
+    "trellix-devices-api-openapi.yml",
+    "trellix-epo-api-openapi.yml",
+    "trellix-events-api-openapi.yml",
+    "trellix-groups-api-openapi.yml",
+    "trellix-queries-api-openapi.yml",
+    "trellix-reactions-api-openapi.yml",
+    "trellix-response-actions-api-openapi.yml",
+    "trellix-searches-api-openapi.yml",
+    "trellix-threats-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

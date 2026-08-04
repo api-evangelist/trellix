@@ -1,0 +1,220 @@
+{
+  "info": {
+    "_postman_id": "dd712696-b87b-4371-b4d5-5cf85f484f1a",
+    "name": "Trellix EDR Action History API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:34.000Z",
+    "updatedAt": "2026-07-28T03:18:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dd712696-b87b-4371-b4d5-5cf85f484f1a"
+  },
+  "item": [
+    {
+      "name": "edr",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "actions",
+              "item": [
+                {
+                  "name": "List action history",
+                  "id": "f077bbf8-b79e-4afa-8b47-88efe5491595",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edr/v2/actions?limit=25&offset=0&since=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edr",
+                        "v2",
+                        "actions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Return actions executed after this ISO 8601 timestamp.",
+                          "key": "since",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the history of response actions executed through the EDR platform, including their status and target details."
+                  },
+                  "response": [
+                    {
+                      "id": "cbd80d29-cba3-464d-913c-d62370a94542",
+                      "name": "Paginated list of actions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/actions?limit=25&offset=0&since=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "actions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Return actions executed after this ISO 8601 timestamp.",
+                              "key": "since",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"executing\",\n      \"targetHost\": \"<string>\",\n      \"initiatedBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"pending\",\n      \"targetHost\": \"<string>\",\n      \"initiatedBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"completedAt\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:35.000Z",
+                      "updatedAt": "2026-07-28T03:18:35.000Z",
+                      "uid": "35240-cbd80d29-cba3-464d-913c-d62370a94542"
+                    },
+                    {
+                      "id": "e4c7cc0e-0092-4e54-be54-58ec74d8f59f",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/actions?limit=25&offset=0&since=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "actions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Return actions executed after this ISO 8601 timestamp.",
+                              "key": "since",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:35.000Z",
+                      "updatedAt": "2026-07-28T03:18:35.000Z",
+                      "uid": "35240-e4c7cc0e-0092-4e54-be54-58ec74d8f59f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:35.000Z",
+                  "updatedAt": "2026-07-28T03:18:35.000Z",
+                  "uid": "35240-f077bbf8-b79e-4afa-8b47-88efe5491595"
+                }
+              ],
+              "id": "e8e2248d-43f2-489e-a5f2-49fab49eb6ee",
+              "createdAt": "2026-07-28T03:18:35.000Z",
+              "updatedAt": "2026-07-28T03:18:35.000Z",
+              "uid": "35240-e8e2248d-43f2-489e-a5f2-49fab49eb6ee"
+            }
+          ],
+          "id": "c1629eb4-5c57-4707-8f9e-20d2c133a79d",
+          "createdAt": "2026-07-28T03:18:35.000Z",
+          "updatedAt": "2026-07-28T03:18:35.000Z",
+          "uid": "35240-c1629eb4-5c57-4707-8f9e-20d2c133a79d"
+        }
+      ],
+      "id": "76579315-d29f-48aa-bae1-bf6f909ca491",
+      "createdAt": "2026-07-28T03:18:35.000Z",
+      "updatedAt": "2026-07-28T03:18:35.000Z",
+      "uid": "35240-76579315-d29f-48aa-bae1-bf6f909ca491"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

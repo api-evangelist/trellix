@@ -1,0 +1,401 @@
+{
+  "info": {
+    "_postman_id": "778e8b05-7c73-4b0e-8a5a-3cbc12d5b4a9",
+    "name": "Trellix EDR Action History Queries API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:43.000Z",
+    "updatedAt": "2026-07-28T03:18:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-778e8b05-7c73-4b0e-8a5a-3cbc12d5b4a9"
+  },
+  "item": [
+    {
+      "name": "epo",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "queries",
+              "item": [
+                {
+                  "name": "{queryId}",
+                  "item": [
+                    {
+                      "name": "run",
+                      "item": [
+                        {
+                          "name": "Execute a saved query",
+                          "id": "c9a4043f-7556-49d0-8826-c75f5d925e38",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/epo/v2/queries/:queryId/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "epo",
+                                "v2",
+                                "queries",
+                                ":queryId",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8b7c6b18-f90c-43ce-9517-3dcec2aa8306",
+                                  "key": "queryId",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the saved query"
+                                }
+                              ]
+                            },
+                            "description": "Execute a saved query and return its results. Queries run against the ePO SaaS data store and can return device, event, or policy compliance information."
+                          },
+                          "response": [
+                            {
+                              "id": "6115fe8d-a93f-4f2a-8122-e9f1f7874bf3",
+                              "name": "Query results returned",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/epo/v2/queries/:queryId/run",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "epo",
+                                    "v2",
+                                    "queries",
+                                    ":queryId",
+                                    "run"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "queryId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-07-28T03:18:44.000Z",
+                              "updatedAt": "2026-07-28T03:18:44.000Z",
+                              "uid": "35240-6115fe8d-a93f-4f2a-8122-e9f1f7874bf3"
+                            },
+                            {
+                              "id": "5e924c47-eaeb-4827-80d8-36e81de4ea93",
+                              "name": "Unauthorized - invalid or expired access token",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/epo/v2/queries/:queryId/run",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "epo",
+                                    "v2",
+                                    "queries",
+                                    ":queryId",
+                                    "run"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "queryId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:18:44.000Z",
+                              "updatedAt": "2026-07-28T03:18:44.000Z",
+                              "uid": "35240-5e924c47-eaeb-4827-80d8-36e81de4ea93"
+                            },
+                            {
+                              "id": "72122946-e16d-4c1e-91fd-2414ca84d44c",
+                              "name": "Query not found",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/epo/v2/queries/:queryId/run",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "epo",
+                                    "v2",
+                                    "queries",
+                                    ":queryId",
+                                    "run"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "queryId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:18:44.000Z",
+                              "updatedAt": "2026-07-28T03:18:44.000Z",
+                              "uid": "35240-72122946-e16d-4c1e-91fd-2414ca84d44c"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:18:44.000Z",
+                          "updatedAt": "2026-07-28T03:18:44.000Z",
+                          "uid": "35240-c9a4043f-7556-49d0-8826-c75f5d925e38"
+                        }
+                      ],
+                      "id": "b4cacecd-3357-44bb-a8e7-9a299ab8c632",
+                      "createdAt": "2026-07-28T03:18:44.000Z",
+                      "updatedAt": "2026-07-28T03:18:44.000Z",
+                      "uid": "35240-b4cacecd-3357-44bb-a8e7-9a299ab8c632"
+                    }
+                  ],
+                  "id": "d4f80420-76a4-4aa9-a4e1-e3be32d38dbc",
+                  "createdAt": "2026-07-28T03:18:44.000Z",
+                  "updatedAt": "2026-07-28T03:18:44.000Z",
+                  "uid": "35240-d4f80420-76a4-4aa9-a4e1-e3be32d38dbc"
+                },
+                {
+                  "name": "List saved queries",
+                  "id": "bbf00707-319a-4953-b8f5-99b07266e653",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/epo/v2/queries?limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "epo",
+                        "v2",
+                        "queries"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of saved queries available in ePO SaaS. Queries can be executed against the data store for reporting and analysis of managed endpoints and security events."
+                  },
+                  "response": [
+                    {
+                      "id": "57adc84d-f793-4d9b-9457-e985490e4c5e",
+                      "name": "List of saved queries",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/queries?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "queries"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetType\": \"<string>\",\n      \"visibility\": \"public\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetType\": \"<string>\",\n      \"visibility\": \"private\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:44.000Z",
+                      "updatedAt": "2026-07-28T03:18:44.000Z",
+                      "uid": "35240-57adc84d-f793-4d9b-9457-e985490e4c5e"
+                    },
+                    {
+                      "id": "dceff031-0c97-4cfc-a8a7-623d0d8e79ff",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/epo/v2/queries?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "epo",
+                            "v2",
+                            "queries"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:44.000Z",
+                      "updatedAt": "2026-07-28T03:18:44.000Z",
+                      "uid": "35240-dceff031-0c97-4cfc-a8a7-623d0d8e79ff"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:44.000Z",
+                  "updatedAt": "2026-07-28T03:18:44.000Z",
+                  "uid": "35240-bbf00707-319a-4953-b8f5-99b07266e653"
+                }
+              ],
+              "id": "6b16bc83-f7e3-42bb-b0a8-b1f605299d3c",
+              "createdAt": "2026-07-28T03:18:44.000Z",
+              "updatedAt": "2026-07-28T03:18:44.000Z",
+              "uid": "35240-6b16bc83-f7e3-42bb-b0a8-b1f605299d3c"
+            }
+          ],
+          "id": "9ab734bb-cf8b-4ee4-9c34-fd67cb8a8c3a",
+          "createdAt": "2026-07-28T03:18:44.000Z",
+          "updatedAt": "2026-07-28T03:18:44.000Z",
+          "uid": "35240-9ab734bb-cf8b-4ee4-9c34-fd67cb8a8c3a"
+        }
+      ],
+      "id": "b48d48d8-9249-4da1-b847-8b4707332a4a",
+      "createdAt": "2026-07-28T03:18:44.000Z",
+      "updatedAt": "2026-07-28T03:18:44.000Z",
+      "uid": "35240-b48d48d8-9249-4da1-b847-8b4707332a4a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

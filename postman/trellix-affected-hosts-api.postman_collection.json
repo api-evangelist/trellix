@@ -1,0 +1,220 @@
+{
+  "info": {
+    "_postman_id": "a3988cf8-5f10-4ad1-b749-a9b49df608a6",
+    "name": "Trellix EDR Action History Affected Hosts API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:35.000Z",
+    "updatedAt": "2026-07-28T03:18:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a3988cf8-5f10-4ad1-b749-a9b49df608a6"
+  },
+  "item": [
+    {
+      "name": "edr",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "affectedhosts",
+              "item": [
+                {
+                  "name": "List affected hosts",
+                  "id": "76c2627e-0a2a-49e9-ac98-be044540e0c1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/edr/v2/affectedhosts?limit=25&offset=0&threatId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edr",
+                        "v2",
+                        "affectedhosts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of items to return per page",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of items to skip for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter affected hosts by a specific threat",
+                          "key": "threatId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve detection counts, severity rankings, and first detection timestamps for systems affected by threats. Provides a host-centric view of the threat landscape across managed endpoints."
+                  },
+                  "response": [
+                    {
+                      "id": "ec02f9f6-64b0-4879-9147-18367880eb24",
+                      "name": "Paginated list of affected hosts",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/affectedhosts?limit=25&offset=0&threatId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "affectedhosts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter affected hosts by a specific threat",
+                              "key": "threatId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"hostName\": \"<string>\",\n      \"agentGuid\": \"<uuid>\",\n      \"ipAddress\": \"<string>\",\n      \"macAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detectionCount\": \"<integer>\",\n      \"severity\": \"medium\",\n      \"firstDetected\": \"<dateTime>\",\n      \"lastDetected\": \"<dateTime>\"\n    },\n    {\n      \"hostName\": \"<string>\",\n      \"agentGuid\": \"<uuid>\",\n      \"ipAddress\": \"<string>\",\n      \"macAddresses\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"detectionCount\": \"<integer>\",\n      \"severity\": \"high\",\n      \"firstDetected\": \"<dateTime>\",\n      \"lastDetected\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:36.000Z",
+                      "updatedAt": "2026-07-28T03:18:36.000Z",
+                      "uid": "35240-ec02f9f6-64b0-4879-9147-18367880eb24"
+                    },
+                    {
+                      "id": "00d989cf-deb8-427c-abc4-9e2d8987f1de",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/affectedhosts?limit=25&offset=0&threatId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "affectedhosts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of items to return per page",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Filter affected hosts by a specific threat",
+                              "key": "threatId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:36.000Z",
+                      "updatedAt": "2026-07-28T03:18:36.000Z",
+                      "uid": "35240-00d989cf-deb8-427c-abc4-9e2d8987f1de"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:36.000Z",
+                  "updatedAt": "2026-07-28T03:18:36.000Z",
+                  "uid": "35240-76c2627e-0a2a-49e9-ac98-be044540e0c1"
+                }
+              ],
+              "id": "17b10cad-6bf3-4882-898c-d353e4c78325",
+              "createdAt": "2026-07-28T03:18:36.000Z",
+              "updatedAt": "2026-07-28T03:18:36.000Z",
+              "uid": "35240-17b10cad-6bf3-4882-898c-d353e4c78325"
+            }
+          ],
+          "id": "fad5a8d0-744d-4e72-a7d2-bfe24c267169",
+          "createdAt": "2026-07-28T03:18:36.000Z",
+          "updatedAt": "2026-07-28T03:18:36.000Z",
+          "uid": "35240-fad5a8d0-744d-4e72-a7d2-bfe24c267169"
+        }
+      ],
+      "id": "6e03152e-c125-433e-b9e3-830b346d160e",
+      "createdAt": "2026-07-28T03:18:36.000Z",
+      "updatedAt": "2026-07-28T03:18:36.000Z",
+      "uid": "35240-6e03152e-c125-433e-b9e3-830b346d160e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

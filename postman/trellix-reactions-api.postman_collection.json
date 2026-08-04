@@ -1,0 +1,260 @@
+{
+  "info": {
+    "_postman_id": "34612bf8-82a5-4c61-a5a5-2b3326d8773f",
+    "name": "Trellix EDR Action History Reactions API",
+    "description": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:44.000Z",
+    "updatedAt": "2026-07-28T03:18:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-34612bf8-82a5-4c61-a5a5-2b3326d8773f"
+  },
+  "item": [
+    {
+      "name": "edr",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "reactions",
+              "item": [
+                {
+                  "name": "Execute a response reaction",
+                  "id": "4100b863-4794-4e5a-b43d-d0449d9b00cc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"quarantine_file\",\n  \"targetHost\": \"<string>\",\n  \"parameters\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/edr/v2/reactions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "edr",
+                        "v2",
+                        "reactions"
+                      ]
+                    },
+                    "description": "Execute a response reaction on a targeted endpoint, such as killing a process, quarantining a file, or collecting forensic data. Reactions are executed in the context of a real-time search session."
+                  },
+                  "response": [
+                    {
+                      "id": "63dc0c9e-2f4e-4f89-8adc-b47e316840b5",
+                      "name": "Reaction accepted for execution",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"quarantine_file\",\n  \"targetHost\": \"<string>\",\n  \"parameters\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/reactions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "reactions"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"pending\",\n    \"targetHost\": \"<string>\",\n    \"createdAt\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:18:45.000Z",
+                      "updatedAt": "2026-07-28T03:18:45.000Z",
+                      "uid": "35240-63dc0c9e-2f4e-4f89-8adc-b47e316840b5"
+                    },
+                    {
+                      "id": "eb7f10e5-7fcb-44aa-90f7-c7c40bcc69c6",
+                      "name": "Invalid reaction parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"quarantine_file\",\n  \"targetHost\": \"<string>\",\n  \"parameters\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/reactions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "reactions"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:45.000Z",
+                      "updatedAt": "2026-07-28T03:18:45.000Z",
+                      "uid": "35240-eb7f10e5-7fcb-44aa-90f7-c7c40bcc69c6"
+                    },
+                    {
+                      "id": "d99f1256-30d3-4d40-b77d-176b73e86458",
+                      "name": "Unauthorized - invalid or expired access token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"quarantine_file\",\n  \"targetHost\": \"<string>\",\n  \"parameters\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/edr/v2/reactions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "edr",
+                            "v2",
+                            "reactions"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:45.000Z",
+                      "updatedAt": "2026-07-28T03:18:45.000Z",
+                      "uid": "35240-d99f1256-30d3-4d40-b77d-176b73e86458"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:45.000Z",
+                  "updatedAt": "2026-07-28T03:18:45.000Z",
+                  "uid": "35240-4100b863-4794-4e5a-b43d-d0449d9b00cc"
+                }
+              ],
+              "id": "f14eec19-d16e-444d-9995-5b329e0c302a",
+              "createdAt": "2026-07-28T03:18:45.000Z",
+              "updatedAt": "2026-07-28T03:18:45.000Z",
+              "uid": "35240-f14eec19-d16e-444d-9995-5b329e0c302a"
+            }
+          ],
+          "id": "a8b86281-3f1c-4622-8a5d-b20f6e470d41",
+          "createdAt": "2026-07-28T03:18:45.000Z",
+          "updatedAt": "2026-07-28T03:18:45.000Z",
+          "uid": "35240-a8b86281-3f1c-4622-8a5d-b20f6e470d41"
+        }
+      ],
+      "id": "54eae744-7a27-4c5c-a21c-7025ce343f6f",
+      "createdAt": "2026-07-28T03:18:45.000Z",
+      "updatedAt": "2026-07-28T03:18:45.000Z",
+      "uid": "35240-54eae744-7a27-4c5c-a21c-7025ce343f6f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.manage.trellix.com"
+    }
+  ]
+}

@@ -523,9 +523,9 @@ common:
   - type: ReleaseNotes
     url: https://docs.trellix.com/bundle/trellix-developer-portal-and-marketplace-release-notes
   - type: OpenAPI
-    url: openapi/trellix-edr-openapi.yml
+    url: openapi/_original/trellix-edr-openapi.yml
   - type: OpenAPI
-    url: openapi/trellix-epo-saas-openapi.yml
+    url: openapi/_original/trellix-epo-saas-openapi.yml
   - type: JSONSchema
     url: json-schema/trellix-threat-schema.json
   - type: JSONSchema

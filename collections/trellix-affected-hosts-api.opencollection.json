@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Affected Hosts API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Affected Hosts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List affected hosts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/affectedhosts",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "threatId",
+                "value": "",
+                "type": "query",
+                "description": "Filter affected hosts by a specific threat"
+              }
+            ]
+          },
+          "docs": "Retrieve detection counts, severity rankings, and first detection timestamps for systems affected by threats. Provides a host-centric view of the threat landscape across managed endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

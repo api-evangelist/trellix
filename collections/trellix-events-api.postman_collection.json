@@ -1,0 +1,281 @@
+{
+  "item": [
+    {
+      "id": "8cc18463-14d7-45e9-9eab-ddaa52a8c95d",
+      "name": "Events",
+      "description": {
+        "content": "Retrieve threat events and security incidents detected across managed endpoints. Events have a 3-day retention period.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3bd149b5-f84e-4cb5-8e46-d4f96f569c7b",
+          "name": "List threat events",
+          "request": {
+            "name": "List threat events",
+            "description": {
+              "content": "Retrieve threat events detected across managed endpoints. Events include malware detections, policy violations, and other security incidents. The data retention period for events is 3 days.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "epo",
+                "v2",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>",
+                  "description": "Return events that occurred after this ISO 8601 timestamp. Maximum lookback is 3 days due to data retention limits."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter expression to narrow events by attributes such as severity, analyzer name, or agent GUID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dded3a10-4ee0-4161-a094-a21b8d25650e",
+              "name": "Paginated list of threat events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"timestamp\": \"1972-09-24T10:01:56.922Z\",\n        \"agentGuid\": \"32e6f0cb-2c0f-b519-c6f1-b2bcfb452375\",\n        \"analyzerName\": \"string\",\n        \"analyzerVersion\": \"string\",\n        \"threatName\": \"string\",\n        \"threatSeverity\": \"string\",\n        \"threatCategory\": \"string\",\n        \"targetFileName\": \"string\",\n        \"targetFilePath\": \"string\",\n        \"detectionMethod\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"timestamp\": \"1951-01-03T11:33:01.219Z\",\n        \"agentGuid\": \"a36442ab-e94b-44ee-45fd-4e80f4c34d5d\",\n        \"analyzerName\": \"string\",\n        \"analyzerVersion\": \"string\",\n        \"threatName\": \"string\",\n        \"threatSeverity\": \"string\",\n        \"threatCategory\": \"string\",\n        \"targetFileName\": \"string\",\n        \"targetFilePath\": \"string\",\n        \"detectionMethod\": \"string\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 9555,\n    \"limit\": 6731,\n    \"offset\": 4948\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3263d07-fc13-4fc5-92c9-fbd63d43532b",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9e3b6a52-4ab4-45f9-b5b6-487237a67cbe",
+              "name": "Forbidden - insufficient scope permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8e51d64b-44d5-4148-9749-c60be814e6c9",
+    "name": "Trellix EDR Action History Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Reactions API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute a response reaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manage.trellix.com/edr/v2/reactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a response reaction on a targeted endpoint, such as killing a process, quarantining a file, or collecting forensic data. Reactions are executed in the context of a real-time search session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

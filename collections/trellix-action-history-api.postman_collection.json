@@ -1,0 +1,209 @@
+{
+  "item": [
+    {
+      "id": "d591602d-7ca2-4acf-8128-cc4a13500557",
+      "name": "Action History",
+      "description": {
+        "content": "Retrieve the history of response actions executed on managed endpoints through the EDR platform.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb11c90b-0552-45d6-bff4-5c5aa7049ac9",
+          "name": "List action history",
+          "request": {
+            "name": "List action history",
+            "description": {
+              "content": "Retrieve the history of response actions executed through the EDR platform, including their status and target details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edr",
+                "v2",
+                "actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>",
+                  "description": "Return actions executed after this ISO 8601 timestamp."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39020909-3c03-49cf-864d-64fd183859a8",
+              "name": "Paginated list of actions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"pending\",\n      \"targetHost\": \"string\",\n      \"initiatedBy\": \"string\",\n      \"createdAt\": \"2022-04-22T05:58:57.667Z\",\n      \"completedAt\": \"1956-06-27T03:55:57.731Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"executing\",\n      \"targetHost\": \"string\",\n      \"initiatedBy\": \"string\",\n      \"createdAt\": \"1983-08-19T17:45:59.259Z\",\n      \"completedAt\": \"1996-04-25T01:43:41.196Z\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 9182,\n    \"limit\": 3011,\n    \"offset\": 1882\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "794308c0-d0ea-4c81-a47e-dd6a1fa46b14",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "39920dce-11f3-4299-92ac-3795cbe9276e",
+    "name": "Trellix EDR Action History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

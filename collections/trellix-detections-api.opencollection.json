@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Detections API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List detections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/detections",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return detections that occurred after this ISO 8601 timestamp."
+              },
+              {
+                "name": "threatId",
+                "value": "",
+                "type": "query",
+                "description": "Filter detections associated with a specific threat"
+              }
+            ]
+          },
+          "docs": "Retrieve individual detection events across managed endpoints. Detections include SHA256 hashes, severity rankings, and MITRE ATT&CK technique tags associated with each event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

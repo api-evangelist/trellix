@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Action History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List action history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/actions",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return actions executed after this ISO 8601 timestamp."
+              }
+            ]
+          },
+          "docs": "Retrieve the history of response actions executed through the EDR platform, including their status and target details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,399 @@
+{
+  "item": [
+    {
+      "id": "e88d42a7-8d47-483a-bcff-29ff69fa2aea",
+      "name": "Queries",
+      "description": {
+        "content": "Execute and manage saved queries against the ePO SaaS data store for reporting and analysis.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "480d13f7-26d6-41d9-a7f8-f791425d6bd0",
+          "name": "List saved queries",
+          "request": {
+            "name": "List saved queries",
+            "description": {
+              "content": "Retrieve a list of saved queries available in ePO SaaS. Queries can be executed against the data store for reporting and analysis of managed endpoints and security events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "epo",
+                "v2",
+                "queries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac9ce9ee-3aa4-43fc-81e3-5d6a793bda54",
+              "name": "List of saved queries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"targetType\": \"string\",\n      \"visibility\": \"public\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"targetType\": \"string\",\n      \"visibility\": \"public\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 9948,\n    \"limit\": 4221,\n    \"offset\": 9795\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "500a3090-00f8-49ef-a78d-4deac1939b4e",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f9cf4d0-4d6a-4aa1-907a-8a61ed2565a4",
+          "name": "Execute a saved query",
+          "request": {
+            "name": "Execute a saved query",
+            "description": {
+              "content": "Execute a saved query and return its results. Queries run against the ePO SaaS data store and can return device, event, or policy compliance information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "epo",
+                "v2",
+                "queries",
+                ":queryId",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queryId",
+                  "description": "(Required) Unique identifier of the saved query"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09117579-77af-45b4-9c7f-07dfab8dba87",
+              "name": "Query results returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "queries",
+                    ":queryId",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queryId",
+                      "description": "(Required) Unique identifier of the saved query"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"totalItems\": 9773,\n    \"limit\": 5791,\n    \"offset\": 1645\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d47e0ebc-5f7e-4b40-be49-ef2746c40dc5",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "queries",
+                    ":queryId",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queryId",
+                      "description": "(Required) Unique identifier of the saved query"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f19e811e-2e8c-425e-8233-f52a54882ce0",
+              "name": "Query not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "queries",
+                    ":queryId",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queryId",
+                      "description": "(Required) Unique identifier of the saved query"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bfa48931-c2a5-4704-be13-8e4471348e97",
+    "name": "Trellix EDR Action History Queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

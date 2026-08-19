@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Groups API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List device groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/epo/v2/groups",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve the organizational hierarchy of device groups configured in ePO SaaS. Groups define the structure for policy inheritance and reporting scope."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

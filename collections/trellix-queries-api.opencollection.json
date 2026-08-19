@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Queries API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List saved queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/epo/v2/queries",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of saved queries available in ePO SaaS. Queries can be executed against the data store for reporting and analysis of managed endpoints and security events."
+        },
+        {
+          "info": {
+            "name": "Execute a saved query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manage.trellix.com/epo/v2/queries/:queryId/run",
+            "params": [
+              {
+                "name": "queryId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the saved query"
+              }
+            ]
+          },
+          "docs": "Execute a saved query and return its results. Queries run against the ePO SaaS data store and can return device, event, or policy compliance information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

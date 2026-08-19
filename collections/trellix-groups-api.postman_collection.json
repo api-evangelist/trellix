@@ -1,0 +1,195 @@
+{
+  "item": [
+    {
+      "id": "ca1f9c7c-8f71-4873-9c50-6c81b457c222",
+      "name": "Groups",
+      "description": {
+        "content": "Manage device groups and organizational hierarchy within the ePO SaaS console.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eddad695-f2f5-4b00-8746-5cbbba56e2c4",
+          "name": "List device groups",
+          "request": {
+            "name": "List device groups",
+            "description": {
+              "content": "Retrieve the organizational hierarchy of device groups configured in ePO SaaS. Groups define the structure for policy inheritance and reporting scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "epo",
+                "v2",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9dd5506f-c995-4337-b63a-e61fb8ade7af",
+              "name": "List of device groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"parentId\": \"string\",\n      \"path\": \"string\",\n      \"deviceCount\": 3161\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"parentId\": \"string\",\n      \"path\": \"string\",\n      \"deviceCount\": 1524\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 7788,\n    \"limit\": 8745,\n    \"offset\": 2356\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c295ac4-c77b-48f8-a612-da81bb006ff4",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "34fd8db3-4527-4a5b-a94b-7c95a4c5dbbd",
+    "name": "Trellix EDR Action History Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

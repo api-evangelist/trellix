@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "9a620947-555e-40f6-bc21-7beedc9fcbb0",
+      "name": "Alerts",
+      "description": {
+        "content": "Access discrete detection alerts containing process, user, and host context with trace identifiers and severity scores.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "683fa12d-64ed-4e2a-bf45-923bdbb0b54f",
+          "name": "List alerts",
+          "request": {
+            "name": "List alerts",
+            "description": {
+              "content": "Retrieve discrete detection alerts containing process, user, and host context. Alerts include trace identifiers, detection dates, event types, severity scores, and detection tags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edr",
+                "v2",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>",
+                  "description": "Return alerts generated after this ISO 8601 timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "severity",
+                  "value": "<string>",
+                  "description": "Filter alerts by severity level"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8ae198f-e9ad-478c-8950-a5197b1a0fa7",
+              "name": "Paginated list of alerts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"traceId\": \"string\",\n      \"eventType\": \"string\",\n      \"severity\": 9554,\n      \"processName\": \"string\",\n      \"commandLine\": \"string\",\n      \"hashId\": \"string\",\n      \"domain\": \"string\",\n      \"hostName\": \"string\",\n      \"userName\": \"string\",\n      \"detectedAt\": \"1947-10-07T09:07:22.263Z\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"traceId\": \"string\",\n      \"eventType\": \"string\",\n      \"severity\": 1626,\n      \"processName\": \"string\",\n      \"commandLine\": \"string\",\n      \"hashId\": \"string\",\n      \"domain\": \"string\",\n      \"hostName\": \"string\",\n      \"userName\": \"string\",\n      \"detectedAt\": \"1956-12-29T07:58:11.340Z\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 6766,\n    \"limit\": 483,\n    \"offset\": 4031\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb3ffbda-457b-400a-82b3-609071edff41",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "severity",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e59be4d3-564a-4bf6-ace7-f8a1ac569980",
+    "name": "Trellix EDR Action History Alerts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

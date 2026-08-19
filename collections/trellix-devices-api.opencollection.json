@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Devices API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List managed devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/epo/v2/devices",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression to narrow device results by attributes such as name, operating system, or agent status."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order for results, specified as a field name with optional direction prefix (+ for ascending, - for descending)."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of all endpoint devices registered and managed through ePO SaaS. Returns device attributes including name, agent GUID, tags, operating system, and last communication timestamp."
+        },
+        {
+          "info": {
+            "name": "Get device details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/epo/v2/devices/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the managed device"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific managed device by its unique identifier. Returns comprehensive device attributes including hardware details, installed products, and agent status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

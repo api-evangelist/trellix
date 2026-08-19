@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Events API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List threat events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/epo/v2/events",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return events that occurred after this ISO 8601 timestamp. Maximum lookback is 3 days due to data retention limits."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression to narrow events by attributes such as severity, analyzer name, or agent GUID."
+              }
+            ]
+          },
+          "docs": "Retrieve threat events detected across managed endpoints. Events include malware detections, policy violations, and other security incidents. The data retention period for events is 3 days."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

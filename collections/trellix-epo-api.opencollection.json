@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Epo API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Epo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/epo/v2/tags",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve all tags configured in ePO SaaS. Tags are used to organize and group managed devices for policy assignment and reporting purposes."
+        },
+        {
+          "info": {
+            "name": "Create a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manage.trellix.com/epo/v2/tags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new tag in ePO SaaS for organizing managed devices. Tags can be applied to devices manually or through automated criteria-based assignment rules."
+        },
+        {
+          "info": {
+            "name": "Get tag details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/epo/v2/tags/:tagId",
+            "params": [
+              {
+                "name": "tagId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the tag"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific tag including its name, description, and the criteria used for automatic device assignment."
+        },
+        {
+          "info": {
+            "name": "Delete a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.manage.trellix.com/epo/v2/tags/:tagId",
+            "params": [
+              {
+                "name": "tagId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the tag"
+              }
+            ]
+          },
+          "docs": "Delete a tag from ePO SaaS. Removing a tag also removes the tag assignment from all associated devices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

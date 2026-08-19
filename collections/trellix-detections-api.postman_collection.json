@@ -1,0 +1,223 @@
+{
+  "item": [
+    {
+      "id": "14ec9a9c-ba5a-4208-b468-0347ae72afce",
+      "name": "Detections",
+      "description": {
+        "content": "Retrieve individual detection events with process names, command lines, hash identifiers, and domain information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33f1062b-5b64-46fa-aee9-3fb93ea3d979",
+          "name": "List detections",
+          "request": {
+            "name": "List detections",
+            "description": {
+              "content": "Retrieve individual detection events across managed endpoints. Detections include SHA256 hashes, severity rankings, and MITRE ATT&CK technique tags associated with each event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edr",
+                "v2",
+                "detections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<dateTime>",
+                  "description": "Return detections that occurred after this ISO 8601 timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "threatId",
+                  "value": "<string>",
+                  "description": "Filter detections associated with a specific threat"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a09ea90-5b41-4115-a820-f39591b56976",
+              "name": "Paginated list of detections",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "detections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "threatId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"threatId\": \"string\",\n      \"sha256\": \"string\",\n      \"severity\": \"high\",\n      \"processName\": \"string\",\n      \"commandLine\": \"string\",\n      \"hostName\": \"string\",\n      \"agentGuid\": \"8bf23052-30d8-e68f-24d1-84985dedfeb1\",\n      \"detectedAt\": \"2016-11-14T05:09:01.787Z\",\n      \"mitreAttack\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"threatId\": \"string\",\n      \"sha256\": \"string\",\n      \"severity\": \"medium\",\n      \"processName\": \"string\",\n      \"commandLine\": \"string\",\n      \"hostName\": \"string\",\n      \"agentGuid\": \"e802e3a1-78eb-9754-aee9-317a25bb802d\",\n      \"detectedAt\": \"1996-05-10T16:23:18.863Z\",\n      \"mitreAttack\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 6287,\n    \"limit\": 2097,\n    \"offset\": 7646\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "475ab413-bd8d-4a5c-9dea-964aa3af1d45",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "detections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "threatId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0d05a063-3e7a-43fb-95a7-e27ff3048200",
+    "name": "Trellix EDR Action History Detections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

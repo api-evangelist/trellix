@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Threats API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Threats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List detected threats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/threats",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Return threats detected after this ISO 8601 timestamp."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "Filter threats by severity level"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of aggregated threats detected across managed endpoints. Threats are collections of related alerts grouped by Trellix correlation logic, including severity rankings, SHA256 hashes, and MITRE ATT&CK technique mappings."
+        },
+        {
+          "info": {
+            "name": "Get threat details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/threats/:threatId",
+            "params": [
+              {
+                "name": "threatId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the threat"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific threat including all associated alerts, affected hosts, MITRE ATT&CK mappings, and aggregated indicators of compromise."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

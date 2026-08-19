@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trellix EDR Action History Searches API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Searches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List searches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/searches",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination"
+              }
+            ]
+          },
+          "docs": "Retrieve the list of real-time searches and their current execution status."
+        },
+        {
+          "info": {
+            "name": "Create a real-time search",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.manage.trellix.com/edr/v2/searches",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate a real-time search across managed endpoints to hunt for specific indicators of compromise such as file hashes, process names, or network connections. The search runs asynchronously and results are retrieved separately."
+        },
+        {
+          "info": {
+            "name": "Get search status and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.manage.trellix.com/edr/v2/searches/:searchId",
+            "params": [
+              {
+                "name": "searchId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the real-time search"
+              }
+            ]
+          },
+          "docs": "Retrieve the current status and results of a real-time search. Results include matching endpoints and the specific indicators that were found during the search."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

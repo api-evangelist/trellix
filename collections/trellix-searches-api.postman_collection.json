@@ -1,0 +1,596 @@
+{
+  "item": [
+    {
+      "id": "bc2eebf0-8567-43b6-8ee8-ad3576c8edf2",
+      "name": "Searches",
+      "description": {
+        "content": "Execute real-time searches across managed endpoints to hunt for indicators of compromise and suspicious activity.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "813c288a-c03e-454e-96df-77b6fb8e9349",
+          "name": "Create a real-time search",
+          "request": {
+            "name": "Create a real-time search",
+            "description": {
+              "content": "Initiate a real-time search across managed endpoints to hunt for specific indicators of compromise such as file hashes, process names, or network connections. The search runs asynchronously and results are retrieved separately.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edr",
+                "v2",
+                "searches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"targetHosts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc2e98c7-5a3a-4027-914e-4c4498c1e6fb",
+              "name": "Search initiated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"targetHosts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"failed\",\n    \"query\": \"string\",\n    \"targetHosts\": [\n      \"string\",\n      \"string\"\n    ],\n    \"matchCount\": 6087,\n    \"createdAt\": \"1985-08-27T20:25:42.959Z\",\n    \"completedAt\": \"2007-04-11T10:55:49.580Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ba40152-7fa2-45de-99a7-8a76988b163c",
+              "name": "Invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"targetHosts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19d2b198-08e9-4410-8df1-ef67a47e042b",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"targetHosts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cae4a03-3ede-4f95-812c-537cdcde41ee",
+          "name": "List searches",
+          "request": {
+            "name": "List searches",
+            "description": {
+              "content": "Retrieve the list of real-time searches and their current execution status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edr",
+                "v2",
+                "searches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a369303-2fef-4902-aed1-d00466e425fe",
+              "name": "Paginated list of searches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"status\": \"completed\",\n      \"query\": \"string\",\n      \"targetHosts\": [\n        \"string\",\n        \"string\"\n      ],\n      \"matchCount\": 8250,\n      \"createdAt\": \"1949-05-21T06:08:54.905Z\",\n      \"completedAt\": \"1978-02-07T21:33:35.717Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"status\": \"pending\",\n      \"query\": \"string\",\n      \"targetHosts\": [\n        \"string\",\n        \"string\"\n      ],\n      \"matchCount\": 3054,\n      \"createdAt\": \"1995-03-20T17:52:53.781Z\",\n      \"completedAt\": \"1951-02-01T07:39:01.316Z\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 1156,\n    \"limit\": 2399,\n    \"offset\": 6987\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e623fe45-9422-4df0-b438-4f1cf67d0577",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94f530a5-8375-4ff6-abbe-356ea7dc1943",
+          "name": "Get search status and results",
+          "request": {
+            "name": "Get search status and results",
+            "description": {
+              "content": "Retrieve the current status and results of a real-time search. Results include matching endpoints and the specific indicators that were found during the search.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edr",
+                "v2",
+                "searches",
+                ":searchId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "searchId",
+                  "description": "(Required) Unique identifier of the real-time search"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd9bd892-3447-4a70-a7e6-41230f580b83",
+              "name": "Search status and results returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches",
+                    ":searchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "searchId",
+                      "description": "(Required) Unique identifier of the real-time search"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"failed\",\n    \"query\": \"string\",\n    \"targetHosts\": [\n      \"string\",\n      \"string\"\n    ],\n    \"matchCount\": 6087,\n    \"createdAt\": \"1985-08-27T20:25:42.959Z\",\n    \"completedAt\": \"2007-04-11T10:55:49.580Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85d19037-a57a-4db6-bc8f-b62c078dfa32",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches",
+                    ":searchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "searchId",
+                      "description": "(Required) Unique identifier of the real-time search"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb6d8ec8-e7b7-4dce-abc3-b4856398536f",
+              "name": "Search not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "searches",
+                    ":searchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "searchId",
+                      "description": "(Required) Unique identifier of the real-time search"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ebb52bef-0a5d-421f-8173-2aa1ae2a965e",
+    "name": "Trellix EDR Action History Searches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

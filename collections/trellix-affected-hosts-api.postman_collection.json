@@ -1,0 +1,209 @@
+{
+  "item": [
+    {
+      "id": "30951683-cc22-4cfd-a517-409a8f764549",
+      "name": "Affected Hosts",
+      "description": {
+        "content": "Query detection counts, severity rankings, and first detection timestamps for systems affected by threats.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5de7e3f0-85a0-40ed-a571-c5f24072cc9a",
+          "name": "List affected hosts",
+          "request": {
+            "name": "List affected hosts",
+            "description": {
+              "content": "Retrieve detection counts, severity rankings, and first detection timestamps for systems affected by threats. Provides a host-centric view of the threat landscape across managed endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "edr",
+                "v2",
+                "affectedhosts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "threatId",
+                  "value": "<string>",
+                  "description": "Filter affected hosts by a specific threat"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0812cc19-9205-4369-baea-80ebe8bb90fb",
+              "name": "Paginated list of affected hosts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "affectedhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "threatId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"hostName\": \"string\",\n      \"agentGuid\": \"e1763c58-5354-a868-928c-05d31d89733b\",\n      \"ipAddress\": \"string\",\n      \"macAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"detectionCount\": 66,\n      \"severity\": \"low\",\n      \"firstDetected\": \"1948-09-19T02:28:16.056Z\",\n      \"lastDetected\": \"1976-07-25T11:38:14.034Z\"\n    },\n    {\n      \"hostName\": \"string\",\n      \"agentGuid\": \"46b28e18-7f89-8220-e870-9ac243ba0543\",\n      \"ipAddress\": \"string\",\n      \"macAddresses\": [\n        \"string\",\n        \"string\"\n      ],\n      \"detectionCount\": 2500,\n      \"severity\": \"critical\",\n      \"firstDetected\": \"1957-09-29T10:45:40.809Z\",\n      \"lastDetected\": \"1995-01-14T15:58:59.365Z\"\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 7458,\n    \"limit\": 5794,\n    \"offset\": 5418\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc9e1fdc-814d-4f16-a8cf-d6ec9085688b",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "edr",
+                    "v2",
+                    "affectedhosts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "threatId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "026f4635-fa35-4ee8-9dad-20c23718088b",
+    "name": "Trellix EDR Action History Affected Hosts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

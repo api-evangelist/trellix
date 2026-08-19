@@ -1,0 +1,481 @@
+{
+  "item": [
+    {
+      "id": "553c4eb7-d40b-4390-9313-997a7ede0dd6",
+      "name": "Devices",
+      "description": {
+        "content": "Manage and query endpoint devices registered in ePO SaaS, including device attributes, agent status, and system information.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1fb751b-15d8-40a0-ac6d-2b98a60136b3",
+          "name": "List managed devices",
+          "request": {
+            "name": "List managed devices",
+            "description": {
+              "content": "Retrieve a paginated list of all endpoint devices registered and managed through ePO SaaS. Returns device attributes including name, agent GUID, tags, operating system, and last communication timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "epo",
+                "v2",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Maximum number of items to return per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of items to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter expression to narrow device results by attributes such as name, operating system, or agent status."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort order for results, specified as a field name with optional direction prefix (+ for ascending, - for descending)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24b05a2e-a9ba-4994-8d96-a0f9214fc27a",
+              "name": "Paginated list of managed devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"agentGuid\": \"4b1229f5-4886-2df2-37f5-6b07a934b018\",\n        \"agentVersion\": \"string\",\n        \"operatingSystem\": \"string\",\n        \"ipAddress\": \"string\",\n        \"macAddress\": \"string\",\n        \"domain\": \"string\",\n        \"userName\": \"string\",\n        \"lastUpdate\": \"2018-11-18T13:49:46.571Z\",\n        \"managed\": true,\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"agentGuid\": \"9460f46f-e953-6bbd-5d06-574d114ad644\",\n        \"agentVersion\": \"string\",\n        \"operatingSystem\": \"string\",\n        \"ipAddress\": \"string\",\n        \"macAddress\": \"string\",\n        \"domain\": \"string\",\n        \"userName\": \"string\",\n        \"lastUpdate\": \"2015-12-30T22:21:03.036Z\",\n        \"managed\": false,\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  ],\n  \"meta\": {\n    \"totalItems\": 743,\n    \"limit\": 8802,\n    \"offset\": 8823\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "043c517f-1bf4-4541-a3b7-b322de87cfe0",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d991770-070f-44e0-b4fd-39ab935f6427",
+              "name": "Forbidden - insufficient scope permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aeb463e3-b414-441c-b1c4-04c945ac7146",
+          "name": "Get device details",
+          "request": {
+            "name": "Get device details",
+            "description": {
+              "content": "Retrieve detailed information about a specific managed device by its unique identifier. Returns comprehensive device attributes including hardware details, installed products, and agent status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "epo",
+                "v2",
+                "devices",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) Unique identifier of the managed device"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37e206d9-94a2-41c5-bce4-f869d4d5268d",
+              "name": "Device details returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Unique identifier of the managed device"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"name\": \"string\",\n      \"agentGuid\": \"bd18df2c-1b2d-334e-88ca-b6316088d40d\",\n      \"agentVersion\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"ipAddress\": \"string\",\n      \"macAddress\": \"string\",\n      \"domain\": \"string\",\n      \"userName\": \"string\",\n      \"lastUpdate\": \"1947-06-13T03:52:19.409Z\",\n      \"managed\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aac6333-ba52-4060-904d-2b234cf12739",
+              "name": "Unauthorized - invalid or expired access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Unique identifier of the managed device"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5aaed33b-00bf-4230-adef-cdc11f8663ad",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "epo",
+                    "v2",
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Unique identifier of the managed device"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.manage.trellix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf6aa65b-8369-4900-885f-17ffd3691f92",
+    "name": "Trellix EDR Action History Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.\n\nContact Support:\n Name: Trellix Support",
+      "type": "text/plain"
+    }
+  }
+}

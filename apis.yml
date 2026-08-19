@@ -3,6 +3,7 @@ description: >-
   Trellix is a cybersecurity company that delivers comprehensive, open, and native extended detection and response (XDR)
   platform. The company provides threat detection, investigation, and response capabilities across endpoints, networks,
   data, and cloud environments.
+specificationVersion: '0.23'
 accessModel:
   pricing: enterprise
   onboarding: self-serve

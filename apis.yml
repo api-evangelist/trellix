@@ -64,6 +64,11 @@ apis:
   tags:
   - Cloud Management
   - Endpoint Management
+  - Software-as-a-Service
+  - Security Management
+  tags_raw:
+  - Cloud Management
+  - Endpoint Management
   - SaaS
   - Security Management
   properties:
@@ -393,6 +398,8 @@ apis:
   humanURL: https://docs.trellix.com/bundle/epolicy-orchestrator
   baseURL: https://your-epo-server:8443/remote
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -403,6 +410,8 @@ apis:
   humanURL: https://docs.trellix.com/bundle/epolicy-orchestrator
   baseURL: https://your-epo-server:8443/remote
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -414,6 +423,8 @@ apis:
   humanURL: https://docs.trellix.com/bundle/epolicy-orchestrator
   baseURL: https://your-epo-server:8443/remote
   tags:
+  - Query
+  tags_raw:
   - Queries
   properties:
   - type: OpenAPI

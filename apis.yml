@@ -3,6 +3,19 @@ description: >-
   Trellix is a cybersecurity company that delivers comprehensive, open, and native extended detection and response (XDR)
   platform. The company provides threat detection, investigation, and response capabilities across endpoints, networks,
   data, and cloud environments.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 accessModel:
   pricing: enterprise
@@ -482,6 +495,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: IssueTracker
+    url: https://github.com/trellix-enterprise/EDR-Integration-Scripts/issues
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/trellix/overview
   - type: AgenticAccess

@@ -1,38 +1,51 @@
 {
   "provider": "trellix",
   "sources": [
-    "trellix-action-history-api-openapi.yml",
-    "trellix-affected-hosts-api-openapi.yml",
-    "trellix-alerts-api-openapi.yml",
-    "trellix-detections-api-openapi.yml",
-    "trellix-devices-api-openapi.yml",
-    "trellix-epo-api-openapi.yml",
-    "trellix-events-api-openapi.yml",
-    "trellix-groups-api-openapi.yml",
-    "trellix-queries-api-openapi.yml",
-    "trellix-reactions-api-openapi.yml",
-    "trellix-response-actions-api-openapi.yml",
-    "trellix-searches-api-openapi.yml",
-    "trellix-threats-api-openapi.yml"
+    "_original/trellix-edr-openapi.yml",
+    "_original/trellix-epo-saas-openapi.yml"
   ],
   "outputs": [
     "trellix-action-history-api-openapi.yml",
     "trellix-affected-hosts-api-openapi.yml",
     "trellix-alerts-api-openapi.yml",
     "trellix-detections-api-openapi.yml",
+    "trellix-reactions-api-openapi.yml",
+    "trellix-searches-api-openapi.yml",
+    "trellix-threats-api-openapi.yml",
     "trellix-devices-api-openapi.yml",
     "trellix-epo-api-openapi.yml",
     "trellix-events-api-openapi.yml",
     "trellix-groups-api-openapi.yml",
     "trellix-queries-api-openapi.yml",
-    "trellix-reactions-api-openapi.yml",
-    "trellix-response-actions-api-openapi.yml",
-    "trellix-searches-api-openapi.yml",
-    "trellix-threats-api-openapi.yml"
+    "trellix-response-actions-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "trellix-edr-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "trellix-epo-saas-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "trellix-epo-saas-openapi.yml: tagged paths GET /epo/v2/tags -> Epo",
+    "trellix-epo-saas-openapi.yml: tagged paths POST /epo/v2/tags -> Epo",
+    "trellix-epo-saas-openapi.yml: tagged paths GET /epo/v2/tags/{tagId} -> Epo",
+    "trellix-epo-saas-openapi.yml: tagged paths DELETE /epo/v2/tags/{tagId} -> Epo",
+    "trellix-epo-saas-openapi.yml: declared missing tag: Epo",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "trellix-action-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-affected-hosts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-detections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-epo-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-reactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-response-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-searches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trellix-threats-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Trellix EDR Action History Searches API
+  title: Trellix EDR Searches API
   description: Endpoint Detection and Response API for advanced threat hunting, investigation, and automated response capabilities. The EDR API supports querying threat data, searching devices, retrieving action history, and executing real-time search and response actions across managed endpoints. Authentication uses OAuth 2.0 client credentials with the soc.act.tg scope.
   version: '2.0'
   contact:
@@ -92,32 +92,32 @@ paths:
         '404':
           description: Search not found
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
-    searchId:
-      name: searchId
-      in: path
-      required: true
-      description: Unique identifier of the real-time search
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
   schemas:
+    SearchCreate:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators.
+        targetHosts:
+          type: array
+          items:
+            type: string
+          description: Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints.
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
     Search:
       type: object
       properties:
@@ -152,31 +152,31 @@ components:
           type: string
           format: date-time
           description: Timestamp when the search completed
-    SearchCreate:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators.
-        targetHosts:
-          type: array
-          items:
-            type: string
-          description: Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints.
-    PaginationMeta:
-      type: object
-      properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    searchId:
+      name: searchId
+      in: path
+      required: true
+      description: Unique identifier of the real-time search
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
   securitySchemes:
     bearerAuth:
       type: http

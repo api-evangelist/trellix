@@ -4,17 +4,21 @@ description: >-
   platform. The company provides threat detection, investigation, and response capabilities across endpoints, networks,
   data, and cloud environments.
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - trellix-enterprise/edr-integration-scripts
+    - trellix-opensource/intelligent-sandbox-api
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 specificationVersion: '0.23'
 accessModel:

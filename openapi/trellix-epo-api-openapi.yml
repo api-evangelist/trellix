@@ -106,7 +106,58 @@ paths:
         '404':
           description: Tag not found
 components:
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    tagId:
+      name: tagId
+      in: path
+      required: true
+      description: Unique identifier of the tag
+      schema:
+        type: string
   schemas:
+    TagCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Display name for the new tag
+        description:
+          type: string
+          description: Description of the tag purpose
+        criteria:
+          type: string
+          description: Optional criteria expression for automatic tag assignment to matching devices
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
     Tag:
       type: object
       properties:
@@ -122,57 +173,6 @@ components:
         criteria:
           type: string
           description: Criteria expression for automatic tag assignment to matching devices
-    PaginationMeta:
-      type: object
-      properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
-    TagCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Display name for the new tag
-        description:
-          type: string
-          description: Description of the tag purpose
-        criteria:
-          type: string
-          description: Optional criteria expression for automatic tag assignment to matching devices
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    tagId:
-      name: tagId
-      in: path
-      required: true
-      description: Unique identifier of the tag
-      schema:
-        type: string
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
   securitySchemes:
     bearerAuth:
       type: http

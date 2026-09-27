@@ -161,13 +161,6 @@ components:
         type: integer
         default: 0
         minimum: 0
-    searchId:
-      name: searchId
-      in: path
-      required: true
-      description: Unique identifier of the real-time search
-      schema:
-        type: string
     limit:
       name: limit
       in: query
@@ -177,6 +170,13 @@ components:
         default: 25
         minimum: 1
         maximum: 100
+    searchId:
+      name: searchId
+      in: path
+      required: true
+      description: Unique identifier of the real-time search
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

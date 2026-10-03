@@ -70,44 +70,7 @@ paths:
         '404':
           description: Query not found
 components:
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
-    queryId:
-      name: queryId
-      in: path
-      required: true
-      description: Unique identifier of the saved query
-      schema:
-        type: string
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
     Query:
       type: object
       properties:
@@ -129,6 +92,43 @@ components:
           - public
           - private
           description: Whether the query is shared or private
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    queryId:
+      name: queryId
+      in: path
+      required: true
+      description: Unique identifier of the saved query
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http

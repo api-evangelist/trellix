@@ -48,6 +48,24 @@ paths:
         '401':
           description: Unauthorized - invalid or expired access token
 components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
   schemas:
     PaginationMeta:
       type: object
@@ -98,24 +116,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of the most recent detection
-  parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
   securitySchemes:
     bearerAuth:
       type: http

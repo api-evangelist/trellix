@@ -107,14 +107,6 @@ paths:
           description: Tag not found
 components:
   parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
     limit:
       name: limit
       in: query
@@ -124,6 +116,14 @@ components:
         default: 25
         minimum: 1
         maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
     tagId:
       name: tagId
       in: path
@@ -146,18 +146,6 @@ components:
         criteria:
           type: string
           description: Optional criteria expression for automatic tag assignment to matching devices
-    PaginationMeta:
-      type: object
-      properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
     Tag:
       type: object
       properties:
@@ -173,6 +161,18 @@ components:
         criteria:
           type: string
           description: Criteria expression for automatic tag assignment to matching devices
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
   securitySchemes:
     bearerAuth:
       type: http

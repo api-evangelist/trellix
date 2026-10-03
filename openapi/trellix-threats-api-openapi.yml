@@ -85,14 +85,6 @@ paths:
           description: Threat not found
 components:
   parameters:
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
     limit:
       name: limit
       in: query
@@ -109,6 +101,14 @@ components:
       description: Unique identifier of the threat
       schema:
         type: string
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
   schemas:
     Threat:
       type: object

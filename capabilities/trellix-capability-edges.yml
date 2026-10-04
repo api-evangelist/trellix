@@ -1,0 +1,98 @@
+slug: trellix
+provider: Trellix
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: Alerts
+  spec_file: trellix-alerts-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.9
+  evidence: GET /edr/v2/alerts listAlerts; 'Endpoint Detection and Response API for advanced threat hunting,
+    investigation, and automated response'
+  reason: Security alerts from an EDR platform — SOC/SIEM threat detection and response, not financial-crime
+    or ops monitoring alerting.
+- tag: Detections
+  spec_file: trellix-detections-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.9
+  evidence: GET /edr/v2/detections listDetections; schema Detection
+  reason: Threat detections from EDR platform directly realise threat detection and response.
+- tag: Threats
+  spec_file: trellix-threats-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.9
+  evidence: GET /edr/v2/threats  listThreats  List detected threats
+  reason: Listing and retrieving detected threats from an endpoint detection and response platform plainly
+    realises threat detection and response; no other reading fits.
+- tag: Events
+  spec_file: trellix-events-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.85
+  evidence: GET /epo/v2/events listEvents List threat events
+  reason: Threat event retrieval from the security management platform is core SOC/SIEM threat detection
+    and response.
+- tag: Reactions
+  spec_file: trellix-reactions-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.85
+  evidence: POST /edr/v2/reactions  createReaction  Execute a response reaction
+  reason: Executes automated response actions on endpoints within an EDR platform described for 'advanced
+    threat hunting, investigation, and automated response capabilities' — this is security threat detection
+    and response, not a generic workflow reaction.
+- tag: Action History
+  spec_file: trellix-action-history-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.8
+  evidence: GET /edr/v2/actions listActionHistory — 'executing real-time search and response actions across
+    managed endpoints'
+  reason: EDR response action audit history is part of SOC threat detection and response operations.
+- tag: Affected Hosts
+  spec_file: trellix-affected-hosts-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.8
+  evidence: GET /edr/v2/affectedhosts listAffectedHosts; schema AffectedHost
+  reason: Lists hosts affected by detected threats as part of EDR investigation — threat detection and
+    response.
+- tag: Response Actions
+  spec_file: trellix-response-actions-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.8
+  evidence: POST /epo/v2/response-actions  createResponseAction  Create a response action
+  reason: Creating response actions through the security management platform is incident/threat response
+    execution across managed endpoints; fits threat detection & response, though the operation detail
+    is sparse.
+- tag: Searches
+  spec_file: trellix-searches-api-openapi.yml
+  capability_id: BC-620.30
+  capability_id_l1: BC-620
+  capability_name: Threat Detection & Response Management
+  confidence: 0.8
+  evidence: POST /edr/v2/searches  createSearch  Create a real-time search
+  reason: Real-time endpoint search within an EDR API supporting 'threat hunting, investigation' — this
+    is SOC threat hunting/investigation tooling rather than a general search facility.

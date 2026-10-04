@@ -499,6 +499,9 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: CapabilityMap
+    url: capabilities/trellix-capability-edges.yml
+    name: Trellix Business Capability Map
   - type: IssueTracker
     url: https://github.com/trellix-enterprise/EDR-Integration-Scripts/issues
   - type: PostmanWorkspace

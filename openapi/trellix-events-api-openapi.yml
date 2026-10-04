@@ -56,24 +56,6 @@ paths:
         '403':
           description: Forbidden - insufficient scope permissions
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
   schemas:
     PaginationMeta:
       type: object
@@ -131,6 +113,24 @@ components:
             detectionMethod:
               type: string
               description: Method used to detect the threat
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
   securitySchemes:
     bearerAuth:
       type: http

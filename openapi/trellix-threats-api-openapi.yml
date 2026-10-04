@@ -85,6 +85,14 @@ paths:
           description: Threat not found
 components:
   parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
     limit:
       name: limit
       in: query
@@ -101,15 +109,19 @@ components:
       description: Unique identifier of the threat
       schema:
         type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
   schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
     Threat:
       type: object
       properties:
@@ -158,18 +170,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of the most recent detection
-    PaginationMeta:
-      type: object
-      properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
   securitySchemes:
     bearerAuth:
       type: http

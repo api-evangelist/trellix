@@ -93,6 +93,21 @@ paths:
           description: Search not found
 components:
   parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    searchId:
+      name: searchId
+      in: path
+      required: true
+      description: Unique identifier of the real-time search
+      schema:
+        type: string
     limit:
       name: limit
       in: query
@@ -102,35 +117,19 @@ components:
         default: 25
         minimum: 1
         maximum: 100
-    searchId:
-      name: searchId
-      in: path
-      required: true
-      description: Unique identifier of the real-time search
-      schema:
-        type: string
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
   schemas:
-    SearchCreate:
+    PaginationMeta:
       type: object
-      required:
-      - query
       properties:
-        query:
-          type: string
-          description: Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators.
-        targetHosts:
-          type: array
-          items:
-            type: string
-          description: Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints.
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
     Search:
       type: object
       properties:
@@ -165,18 +164,19 @@ components:
           type: string
           format: date-time
           description: Timestamp when the search completed
-    PaginationMeta:
+    SearchCreate:
       type: object
+      required:
+      - query
       properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
+        query:
+          type: string
+          description: Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators.
+        targetHosts:
+          type: array
+          items:
+            type: string
+          description: Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints.
   securitySchemes:
     bearerAuth:
       type: http

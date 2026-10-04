@@ -78,31 +78,6 @@ paths:
         '404':
           description: Device not found
 components:
-  parameters:
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    deviceId:
-      name: deviceId
-      in: path
-      required: true
-      description: Unique identifier of the managed device
-      schema:
-        type: string
   schemas:
     Device:
       type: object
@@ -165,6 +140,31 @@ components:
         offset:
           type: integer
           description: Number of items skipped
+  parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    deviceId:
+      name: deviceId
+      in: path
+      required: true
+      description: Unique identifier of the managed device
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
   securitySchemes:
     bearerAuth:
       type: http

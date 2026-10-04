@@ -43,37 +43,6 @@ paths:
         '401':
           description: Unauthorized - invalid or expired access token
 components:
-  schemas:
-    Group:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the group
-        name:
-          type: string
-          description: Display name of the group
-        parentId:
-          type: string
-          description: Identifier of the parent group in the hierarchy
-        path:
-          type: string
-          description: Full path of the group in the organizational hierarchy
-        deviceCount:
-          type: integer
-          description: Number of devices assigned to this group
-    PaginationMeta:
-      type: object
-      properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
   parameters:
     limit:
       name: limit
@@ -92,6 +61,37 @@ components:
         type: integer
         default: 0
         minimum: 0
+  schemas:
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the group
+        name:
+          type: string
+          description: Display name of the group
+        parentId:
+          type: string
+          description: Identifier of the parent group in the hierarchy
+        path:
+          type: string
+          description: Full path of the group in the organizational hierarchy
+        deviceCount:
+          type: integer
+          description: Number of devices assigned to this group
   securitySchemes:
     bearerAuth:
       type: http

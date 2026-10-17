@@ -93,6 +93,15 @@ paths:
           description: Search not found
 components:
   parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
     offset:
       name: offset
       in: query
@@ -108,15 +117,6 @@ components:
       description: Unique identifier of the real-time search
       schema:
         type: string
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
   schemas:
     PaginationMeta:
       type: object
@@ -130,6 +130,19 @@ components:
         offset:
           type: integer
           description: Number of items skipped
+    SearchCreate:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators.
+        targetHosts:
+          type: array
+          items:
+            type: string
+          description: Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints.
     Search:
       type: object
       properties:
@@ -164,19 +177,6 @@ components:
           type: string
           format: date-time
           description: Timestamp when the search completed
-    SearchCreate:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: Search query expression specifying the indicators to hunt for, such as file hashes, process names, or network indicators.
-        targetHosts:
-          type: array
-          items:
-            type: string
-          description: Optional list of specific host identifiers to target. If omitted, the search runs across all managed endpoints.
   securitySchemes:
     bearerAuth:
       type: http

@@ -105,6 +105,15 @@ components:
           type: integer
           description: Number of items skipped
   parameters:
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of items to return per page
+      schema:
+        type: integer
+        default: 25
+        minimum: 1
+        maximum: 100
     queryId:
       name: queryId
       in: path
@@ -120,15 +129,6 @@ components:
         type: integer
         default: 0
         minimum: 0
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of items to return per page
-      schema:
-        type: integer
-        default: 25
-        minimum: 1
-        maximum: 100
   securitySchemes:
     bearerAuth:
       type: http

@@ -49,18 +49,6 @@ paths:
           description: Unauthorized - invalid or expired access token
 components:
   schemas:
-    PaginationMeta:
-      type: object
-      properties:
-        totalItems:
-          type: integer
-          description: Total number of items matching the query
-        limit:
-          type: integer
-          description: Number of items per page
-        offset:
-          type: integer
-          description: Number of items skipped
     AffectedHost:
       type: object
       properties:
@@ -98,7 +86,27 @@ components:
           type: string
           format: date-time
           description: Timestamp of the most recent detection
+    PaginationMeta:
+      type: object
+      properties:
+        totalItems:
+          type: integer
+          description: Total number of items matching the query
+        limit:
+          type: integer
+          description: Number of items per page
+        offset:
+          type: integer
+          description: Number of items skipped
   parameters:
+    offset:
+      name: offset
+      in: query
+      description: Number of items to skip for pagination
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
     limit:
       name: limit
       in: query
@@ -108,14 +116,6 @@ components:
         default: 25
         minimum: 1
         maximum: 100
-    offset:
-      name: offset
-      in: query
-      description: Number of items to skip for pagination
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
   securitySchemes:
     bearerAuth:
       type: http

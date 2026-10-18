@@ -58,3 +58,16 @@
       latest_authorization: '2023-02-03'
   status: not-a-workflow
   arazzo: null
+- slug: trellix-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A01BPF0282G-trellix-ivx-cloud-slack-enterprise
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

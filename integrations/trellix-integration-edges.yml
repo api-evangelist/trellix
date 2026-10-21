@@ -6,6 +6,9 @@ checked:
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-15/suppliers
 - slack/integrations/slack-integration-edges.yml
 - splunk/integrations/splunk-integration-edges.yml
+- https://cloudsecurityalliance.org/membership/current
+- https://fidoalliance.org/certification/fido-certified-products/
+- https://www.cisa.gov/securebydesign/pledge/secure-design-pledge-signers
 source:
 - splunk/integrations/splunk-integration-edges.yml
 edges:
@@ -26,6 +29,23 @@ edges:
   detected: '2026-10-14'
   detected_by: mirror-platform-listings.py
   category: app
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A01BPF0282G-trellix-ivx-cloud-slack-enterprise
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Trellix IVX Cloud Slack Enterprise
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
 - partner_name: FedRAMP
   partner: null
   partner_match: register
@@ -68,20 +88,29 @@ edges:
       latest_authorization: '2023-02-03'
   detected_by: sweep-gov-cloud.py
   first_seen: '2026-10-15'
-- partner_name: Slack (own)
-  partner: slack
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://slack.com/marketplace/A01BPF0282G-trellix-ivx-cloud-slack-enterprise
-  mirror_of: slack/integrations/slack-integration-edges.yml
-  apps:
-  - Trellix IVX Cloud Slack Enterprise
-  listing_count: 1
-  detected: '2026-10-18'
-  detected_by: mirror-platform-listings.py
-  category: Slack app
+- partner_name: CISA Secure by Design Pledge
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.cisa.gov/securebydesign/pledge/secure-design-pledge-signers
+  category: secure-by-design software pledge
+  contract_reference:
+    register: CISA Secure by Design Pledge signers (cisa.gov/securebydesign/pledge)
+    standard: 'CISA Secure by Design Pledge (seven goals: MFA, default passwords, vulnerability classes, patches,
+      disclosure policy, CVEs, evidence of intrusions)'
+    spec_file: null
+    role: secure-by-design-pledge-signer
+    registered_name: Trellix
+    matched_domain: trellix.com
+    matched_by: domain+name-among-holders
+    signal_note: 'participation only: a voluntary public pledge listed by CISA; not an audit or conformance result
+      (no certified_products, no tier)'
+    detected_by: sweep-cloud-security-star.py
+    detected: '2026-10-20'
+    identity: wikidata Q7838012 'Trellix' P856 https://www.trellix.com/en-us/index.html
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-cloud-security-star.py
+  first_seen: '2026-10-20'

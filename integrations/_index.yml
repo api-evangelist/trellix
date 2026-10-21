@@ -16,6 +16,19 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: trellix-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A01BPF0282G-trellix-ivx-cloud-slack-enterprise
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: trellix-fedramp
   label: FedRAMP
   partner_name: FedRAMP
@@ -58,16 +71,29 @@
       latest_authorization: '2023-02-03'
   status: not-a-workflow
   arazzo: null
-- slug: trellix-slack-own
-  label: Slack (own)
-  partner: slack
-  partner_name: Slack (own)
-  category: Slack app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://slack.com/marketplace/A01BPF0282G-trellix-ivx-cloud-slack-enterprise
+- slug: trellix-cisa-secure-by-design-pledge
+  label: CISA Secure by Design Pledge
+  partner_name: CISA Secure by Design Pledge
+  category: secure-by-design software pledge
+  type: register
+  channel: standard-directory
+  evidence: https://www.cisa.gov/securebydesign/pledge/secure-design-pledge-signers
   source: edge
-  relationship: platform-app
+  relationship: standard-participant
+  contract_reference:
+    register: CISA Secure by Design Pledge signers (cisa.gov/securebydesign/pledge)
+    standard: 'CISA Secure by Design Pledge (seven goals: MFA, default passwords, vulnerability classes, patches,
+      disclosure policy, CVEs, evidence of intrusions)'
+    spec_file: null
+    role: secure-by-design-pledge-signer
+    registered_name: Trellix
+    matched_domain: trellix.com
+    matched_by: domain+name-among-holders
+    signal_note: 'participation only: a voluntary public pledge listed by CISA; not an audit or conformance result
+      (no certified_products, no tier)'
+    detected_by: sweep-cloud-security-star.py
+    detected: '2026-10-20'
+    identity: wikidata Q7838012 'Trellix' P856 https://www.trellix.com/en-us/index.html
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
